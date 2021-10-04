@@ -1,0 +1,10 @@
+#contenedor{
+    border: solid 1px black;
+    box-sizing: border-box;
+    height: 300px;
+    width: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
