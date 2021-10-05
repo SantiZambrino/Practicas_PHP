@@ -14,6 +14,11 @@ header{
     background-color: #65C6D8;
     border-bottom-left-radius: 80%;
     border-bottom-right-radius: 80%;
+
+    /* box-shadow: 0 0 0 0.5em #ACD7DF; */
+    filter: drop-shadow(16px 16px 10px #ACD7DF);
+    
+    
 }
 footer{
     border: transparent;
@@ -27,6 +32,9 @@ footer{
 
     border-top-left-radius: 80%;
     border-top-right-radius: 80%;
+
+    /* box-shadow: 0 0 0 0.5em #E68877; */
+    filter: drop-shadow(-16px -16px 10px #E68877);
 }
 
 
