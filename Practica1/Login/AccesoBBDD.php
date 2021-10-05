@@ -14,10 +14,8 @@
         echo mysqli_connect_error();
         exit;
     }
-    
-    echo "Connected successfully.";
- 
-    $sql = "SELECT *
+     
+    $sql = "SELECT nombre, apellidos, telefono
             FROM lista_usuario";
  
     $results = mysqli_query($conn, $sql);
@@ -28,6 +26,7 @@
         $users = mysqli_fetch_all($results, MYSQLI_ASSOC);
         print_r($users);
     }
+
 
     mysqli_close($conn);
  
