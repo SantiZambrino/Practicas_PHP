@@ -24,9 +24,44 @@
         #btn_submit{
             display: inline-block;
         }
+        header{
+    border: transparent;
+    width: 100vw;
+    height: 3rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #65C6D8;
+    border-bottom-left-radius: 80%;
+    border-bottom-right-radius: 80%;
+
+    /* box-shadow: 0 0 0 0.5em #ACD7DF; */
+    filter: drop-shadow(16px 16px 10px #ACD7DF);
+    
+    
+}
+footer{
+    border: transparent;
+    width:100vw;
+    height: 3rem;
+
+    background: #D98171;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+    border-top-left-radius: 80%;
+    border-top-right-radius: 80%;
+
+    /* box-shadow: 0 0 0 0.5em #E68877; */
+    filter: drop-shadow(-16px -16px 10px #E68877);
+}
+
     </style>
 </head>
 <body>
+    <header></header>
+    <main>
     <div id="container">
     <h2 id="Vehiculos">Datos del Vehiculo</h2><br><br>
 	<form id="Vehiculo" name="Vehiculo" method="post"
@@ -110,11 +145,11 @@
                  id="btn_submit" value="Enviar">
 		<input type="reset" name="btn_reset" 
                  id="btn_reset" value="Limpiar formulario"><br><br>
-    </form>
-        
+    </form> 
     </div>  
-            
+    </main>       
 	
-</div>	
+</div>
+<footer></footer> 	
 </body>
 </html>
