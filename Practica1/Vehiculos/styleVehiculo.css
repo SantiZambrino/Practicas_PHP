@@ -93,5 +93,9 @@
     padding: 1rem;
     font-size: 1.125rem;
     border: 1px solid #333;
+    font-weight: bolder;
 }
 
+#h3-saludo{
+    font-size: 1.5rem;
+}

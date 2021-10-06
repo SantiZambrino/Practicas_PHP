@@ -1,8 +1,8 @@
 <pre>
 <?php
  
-     $name = $_GET['nombre'];
-     $apellido = $_GET['apellido'];
+     $name = $_POST['nombre'];
+     $apellido = $_POST['apellido'];
      $db_host = "localhost";
      $db_name = "bd_taller";
      $db_user = "root";
@@ -10,6 +10,8 @@
 
      $name = strtolower($name);
      $apellido = strtolower($apellido);
+
+     echo "<h3>Bienvenido".$name." ".$apellido."</h3>";
      
      $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
      
@@ -21,16 +23,19 @@
      }
       
      $sql = "SELECT nombre, apellidos
-             FROM lista_usuario
-             WHERE nombre = "+$name+" AND apellidos = "+$apellido;
-  
+             FROM lista_usuario";
      $results = mysqli_query($conn, $sql);
  
      if ($results === false) {
          echo mysqli_error($conn);
      } else {
-         $users = mysqli_fetch_all($results, MYSQLI_ASSOC);
-         print_r($users);
+
+    
+        while($users = mysqli_fetch_array($results)){
+
+          
+        }
+    
      }
  
  
