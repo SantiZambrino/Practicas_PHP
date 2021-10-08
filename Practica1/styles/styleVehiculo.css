@@ -85,7 +85,7 @@
 }
 
 #datosUsuarios tr{
-    
+    cursor: pointer;
     text-align: left;
 }
 
@@ -94,6 +94,7 @@
     font-size: 1.125rem;
     border: 1px solid #333;
     font-weight: bolder;
+    
 }
 
 #h3-saludo{
