@@ -51,6 +51,18 @@
         </div>
 
     </div>
+
+    <?php
+
+        $nombre = $_POST['nombre_usu'];
+        $apellidos = $_POST['apellidos-usu'];
+        $dni = $_POST['dni-usu'];
+        $fecha_nacimiento = $_POST['nacimiento-usu'];
+
+        echo ($nombre+$apellidos+$dni+$fecha_nacimiento);
+
+
+    ?>
     
 </body>
 </html>

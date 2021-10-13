@@ -78,38 +78,44 @@
     
         if ($results === false) {
             echo mysqli_error($conn);
-        } else {
+        } 
+        else {
 
-            ?>
-
-        <div class="container-view">
-
-            <table name="datosUsuario" id="datosUsuarios">
+                ?>
             
-                <th>Matrícula</th>
-                <th>Marca</th>
-                <th>Modelo</th>
-                <th>Año</th>
-
             <?php
-            // while($users = mysqli_fetch_array($results)){
-           foreach ($results as $valor) {
-               ?>
-               <a href="#"><tr>
-                   <?php
-                   foreach ($valor as $k) {
-                       ?>
-                       <td><?php echo $k; ?></td>
-                       <?php
-                   }
-                   ?>
+            if(!empty($name)){
+            ?>
+                <div class="container-view">
+
+                <table name="datosUsuario" id="datosUsuarios">
                 
-               </tr></a>
-               <?php
-           }
-            
+                    <th>Matrícula</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Año</th>
+                
+                <?php
+                // while($users = mysqli_fetch_array($results)){
+                foreach ($results as $valor) {
+                    ?>
+                    
+                    <a href="#"><tr>
+                        <?php
+                        foreach ($valor as $k) {
+                            ?>
+                            <td><?php echo $k; ?></td>
+                            <?php
+                        }
+                        ?>
+                        
+                    </tr></a>
+                    <?php
+                }
+                
+            }
+        
         }
-    
         mysqli_close($conn);
     
     ?>
