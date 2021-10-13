@@ -69,13 +69,13 @@
 }
 
 #datosUsuarios{
-    width: 75%;
+    width: 100%;
     height: auto;
     margin-top: 1rem;
     border-collapse: collapse;
 }
 
-#datosUsuarios th{
+/* #datosUsuarios th{
     padding: 1rem;
     font-size: 1rem;
     font-weight: bold;
@@ -99,4 +99,4 @@
 
 #h3-saludo{
     font-size: 1.5rem;
-}
+} */
