@@ -14,7 +14,9 @@
     <div class="outer-container">
 
         <header id="cabecera">
-            <img id="logo-taller" src="../img/Logo-Coche.png" alt="Logo Talleres Zamoen">
+            <a href="../Login/loginPrueba.php">
+                <img id="logo-taller" src="../img/Logo-Coche.png" alt="Logo Talleres Zamoen">
+            </a>
         </header>
 
         <div class="container-login">
@@ -25,8 +27,8 @@
                 <input type="password" id="pass_usu" class="input-style" name="pass-usu" placeholder="Contraseña...">
           
                 <div class="box-btn">
-                <button  class="btn submit" value="enviar">Enviar</button>
-                <button  class="btn newUser" value="registrar" onclick="window.location.href='Practica1\\Login\\index.html'">Nuevo Usuario</button>
+                <a href="../Vehiculos/vehiculos.php" class="btn submit">Enviar</a>
+                <a  class="btn newUser" href="../Login/newUser.php">Nuevo Usuario</a>
                 </div>
           
             </form>

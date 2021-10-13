@@ -64,11 +64,12 @@
 
 
         
-                $sql =  "SELECT matricula, marca, modelo, año 
-                FROM lista_vehiculos
+                $sql =  "SELECT matricula, marca, modelo, año, tipo_servicio, descripcion
+                FROM lista_vehiculos, lista_servicios
                 WHERE id_usuario = (SELECT id_usuario
                                     FROM lista_usuario 
-                                    WHERE dni = '$dni')";
+                                    WHERE dni = '$dni')
+                AND lista_vehiculos.id_servicio = lista_servicios.id_servicio";
                         
                         
     
@@ -86,6 +87,8 @@
                         <th>Marca</th>
                         <th>Modelo</th>
                         <th>Año</th>
+                        <th>Tipo Servicio</th>
+                        <th>Descripcion</th>
                     <?php
                     // while($users = mysqli_fetch_array($results)){
                    foreach ($results as $valor) {

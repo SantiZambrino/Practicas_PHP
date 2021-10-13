@@ -14,7 +14,9 @@
     <div class="outer-container">
 
         <header id="cabecera">
-            <img id="logo-taller" src="../img/Logo-Coche.png" alt="Logo Talleres Zamoen">
+            <a href="../Login/loginPrueba.php">
+                <img id="logo-taller" src="../img/Logo-Coche.png" alt="Logo Talleres Zamoen">
+            </a>
         </header>
 
         <div class="container-login-user">
@@ -26,6 +28,12 @@
 
                 <label for="apellidos-usu">Apellidos</label>
                 <input type="text" id="apellidos-usu" class="input-style" name="apellidos-usu">
+
+                <label for="apellidos-usu">Contraseña</label>
+                <input type="password" id="passwd-usu" class="input-style" name="passwd-usu">
+
+                <label for="apellidos-usu-verificacion">Repetir Contraseña</label>
+                <input type="password" id="apellidos-usu-verificacion" class="input-style" name="apellidos-usu-verificacion">
 
                 <label for="dni-usu">DNI</label>
                 <input type="text" id="dni-usu" class="input-style" name="dni-usu">
