@@ -78,3 +78,12 @@ a{
     background-color:  rgba(126, 198, 211, .6);
     color: #000;
   }
+
+  #mostrarContrasena{
+    position: absolute;
+    width: 1.5rem;
+    cursor: pointer;
+    align-self: flex-end;
+    margin-right: 1.5rem;
+    color: #333;
+  }
