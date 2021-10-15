@@ -20,6 +20,15 @@
             </a>
         </header>
 
+        <?php
+
+            include "../biblioteca/funcionesZamoen.php";
+
+            $conn = Conexion();
+
+
+        ?>
+
         <div class="container-form">
              <!-- <form id="form-vehiculo" name="Vehiculo" method="post" action="#" >
 
@@ -43,9 +52,6 @@
 
         $conn = Conexion();
  
-        include "../biblioteca/funcionesZamoen.php";
-        
-        $conn = Conexion();
 
         // $name = $_POST['nombre'];
         $dni = $_POST['pass_usu_login'];
