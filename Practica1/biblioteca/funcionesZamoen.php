@@ -1,10 +1,10 @@
 <?php
     function Conexion(){
 
-        $db_host = "10.192.240.25:3306";
+        $db_host = "localhost";
         $db_name = "bd_taller";
-        $db_user = "cuentaSanti";
-        $db_pass = "1234";
+        $db_user = "root";
+        $db_pass = "2DAW2021...";
 
         $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
 

@@ -21,14 +21,14 @@
 
         <div class="container-login">
 
-            <form id="form-login" name="form-login" action="#" method="POST">
+            <form id="form-login" name="form-login" action="../Vehiculos\vehiculo.php" method="POST">
 
-                <input type="text" id="name_usu" class="input-style" name="name-usu" placeholder="Usuario...">
-                <input type="password" id="pass_usu" class="input-style" name="pass-usu" placeholder="Contraseña...">
+                <input type="text" id="name_usu_login" class="input-style" name="name_usu_login" placeholder="Usuario...">
+                <input type="password" id="pass_usu_login" class="input-style" name="pass_usu_login" placeholder="Contraseña...">
                 <img src="../img/invisible-passwd.png" alt="Mostrar Contraseña" id="mostrarContrasena">
           
                 <div class="box-btn">
-                <a href="../Vehiculos/vehiculo.php" class="btn submit">Enviar</a>
+                <input type="submit" class="btn submit" value="Enviar">
                 <a  class="btn newUser" href="../Login/newUser.php">Nuevo Usuario</a>
                 </div>
           
@@ -41,7 +41,7 @@
     <script>
         
         var mostrarContrasena = document.getElementById("mostrarContrasena");
-        var mostrar = document.getElementById("pass_usu");
+        var mostrar = document.getElementById("pass_usu_login");
 
         mostrarContrasena.addEventListener('click', function(e){
 

@@ -21,28 +21,25 @@
 
         <div class="container-login-user">
 
-            <form id="form-new-user" name="form-new-user" action="#" method="POST">
+            <form id="form-new-user" name="form-new-user" action="../Login/newUser.php" method="POST">
 
                 <label for="nombre-usu">Nombre</label>
-                <input type="text" id="nombre_usu" class="input-style" name="nombre-usu">
+                <input type="text" id="nombre_usu" class="input-style" name="nombre_usu">
 
                 <label for="apellidos-usu">Apellidos</label>
-                <input type="text" id="apellidos-usu" class="input-style" name="apellidos-usu">
-
-                <label for="apellidos-usu">Contraseña</label>
-                <input type="password" id="passwd-usu" class="input-style" name="passwd-usu">
-
-                <label for="apellidos-usu-verificacion">Repetir Contraseña</label>
-                <input type="password" id="apellidos-usu-verificacion" class="input-style" name="apellidos-usu-verificacion">
+                <input type="text" id="apellidos_usu" class="input-style" name="apellidos_usu">
 
                 <label for="dni-usu">DNI</label>
-                <input type="text" id="dni-usu" class="input-style" name="dni-usu">
+                <input type="text" id="dni_usu" class="input-style" name="dni_usu">
 
-                <label for="nacimiento-usu">Fecha Nacimiento</label>
-                <input type="date" id="nacimiento-usu" class="input-style" name="nacimiento-usu">
+                <label for="telefono-usu">Telefono</label>
+                <input type="tel" id="telefono_usu" class="input-style" name="telefono_usu">
+
+                <label for="email-usu">Email</label>
+                <input type="email" id="email_usu" class="input-style" name="email_usu">
           
                 <div class="box-btn">
-                <button  class="btn registrar" value="enviar">Registrar</button>
+                <button  class="btn registrar" value="enviar" onclick="reenviar()">Registrar</button>
                 <button  class="btn reset" type="reset" value="reset">Borrar</button>
                 </div>
           
@@ -54,13 +51,28 @@
 
     <?php
 
+        include "../biblioteca/funcionesZamoen.php";
+
+        $conn = Conexion();
+
         $nombre = $_POST['nombre_usu'];
-        $apellidos = $_POST['apellidos-usu'];
-        $dni = $_POST['dni-usu'];
-        $fecha_nacimiento = $_POST['nacimiento-usu'];
+        $apellidos = $_POST['apellidos_usu'];
+        $dni = $_POST['dni_usu'];
+        $telefono = $_POST['telefono_usu'];
+        $email = $_POST['email_usu'];
 
-        echo ($nombre+$apellidos+$dni+$fecha_nacimiento);
+        if(!empty($nombre) && !empty($apellidos) && !empty($dni) && !empty($telefono) && !empty($email)){
 
+            $sql =  "INSERT INTO lista_usuario (nombre, apellidos, dni, telefono, email) VALUES ('$nombre', '$apellidos', '$dni', '$telefono', '$email')";
+                
+            $results = mysqli_query($conn, $sql);
+        
+            if ($results === false) {
+            echo mysqli_error($conn);
+            }
+        }
+
+        mysqli_close($conn);
 
     ?>
     
