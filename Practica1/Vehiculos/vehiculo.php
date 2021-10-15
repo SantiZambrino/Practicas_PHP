@@ -39,6 +39,9 @@
         </div>
 
         <?php
+        include "../biblioteca/funcionesZamoen.php";
+
+        $conn = Conexion();
  
         include "../biblioteca/funcionesZamoen.php";
         
@@ -78,22 +81,24 @@
                     <th>Marca</th>
                     <th>Modelo</th>
                     <th>Año</th>
+                  
                 
                 <?php
-                // while($users = mysqli_fetch_array($results)){
+                
                 foreach ($results as $valor) {
                     ?>
                     
-                    <a href="#"><tr>
+                   <tr>
                         <?php
                         foreach ($valor as $k) {
                             ?>
-                            <td><?php echo $k; ?></td>
+                           <td><a href="../Sevicios/Servicios.php?argumento1=<?php echo $name;?>&argumento2=<?php echo $dni;?>"><?php echo $k; ?></a></td>
+                        
                             <?php
                         }
                         ?>
                         
-                    </tr></a>
+                    </tr>
                     <?php
                 }
                 
