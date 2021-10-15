@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/styleHeader.css">
+   
     <link rel="stylesheet" href="../styles/styleVehiculo.css">
     <link rel="shortcut icon" href="../img/favicon-logo.png" />
     <title>Listado Vehiculos | Talleres Zamoen</title>
@@ -21,7 +22,7 @@
         </header>
 
         <div class="container-form">
-             <!-- <form id="form-vehiculo" name="Vehiculo" method="post" action="#" >
+            <form id="form-vehiculo" name="Vehiculo" method="post" >
 
                 <input class="input-style" name="nombre" id="nombre" type="text" placeholder="Indique su nombre" />
                 <input class="input-style" name="dni" id="dni" type="text" placeholder="Indique su DNI" /><br><br>
@@ -32,10 +33,7 @@
         
                 </div>
                 
-            </form> -->
-
-            <h1>Esto es de prueba</h1>
-
+            </form>
         </div>
 
         <?php
@@ -43,21 +41,19 @@
 
         $conn = Conexion();
  
-        include "../biblioteca/funcionesZamoen.php";
+        $name = $_POST['nombre'];
+        $dni = $_POST['dni'];
         
-        $conn = Conexion();
-
-        // $name = $_POST['nombre'];
-        $dni = $_POST['pass_usu_login'];
-
+        $name = strtolower($name);
     
+
         $sql =  "SELECT matricula, marca, modelo, año
         FROM lista_vehiculos, lista_servicios
         WHERE id_usuario = (SELECT id_usuario
                             FROM lista_usuario 
                             WHERE dni = '$dni')
         AND lista_vehiculos.id_servicio = lista_servicios.id_servicio";
-            
+                
                 
 
 
@@ -71,7 +67,7 @@
                 ?>
             
             <?php
-            if(!empty($dni)){
+            if(!empty($name)){
             ?>
                 <div class="container-view">
 
@@ -108,8 +104,8 @@
         mysqli_close($conn);
     
     ?>
+
             </table>
-            <button class="btn newvh">Nuevo Vehiculo</button>
 
 
         </div>
