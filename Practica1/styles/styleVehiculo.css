@@ -1,7 +1,4 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
-
-
 
 *{
     margin: 0;
@@ -9,7 +6,6 @@
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
-
 
 .outer-container{
     display: flex;
@@ -21,67 +17,37 @@
     margin-top: 5rem;
 }
 
-#tittle-vehiculo{
-    color: #333;
-    font-size: 2.5rem;
-    margin-bottom: 1rem;;
-}
-
-#form-vehiculo{
+.container-form{
+    margin-top: 4rem;
+    width: 30rem;
+    background-color: rgb(255, 255, 255, .8);
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: .4rem;
     padding: 1rem;
 }
 
-.input-style{
-    font-size: 1rem;
-    padding: .5rem 2rem;
-    border-radius: 15px;
-    border: .120rem solid rgba(51, 51, 51, .8);
-    margin-bottom: 1rem;
-}
-
-.btn{
-    padding: .7rem 1rem;
-    color: #333;
-    font-size: 1rem;
-    border-radius: 15px;
-    border:none;
-    cursor: pointer;
-    margin-top: -2rem;
-    margin-right: .8rem;
-    background-color: #acd7df;
-    border: 1px solid rgba(51, 51, 51, 0.521);
-}
-
-.newvh{
-    background-color: gray;
-    color: white;
-}
-
-.edit{
-    background-color: #d98171 ;
-}
-
-.box-btn{
-    display: flex;
-    justify-content: space-evenly;
+.container-view{
+    width: 80rem;
+    background-color: rgb(255, 255, 255, .8);
+    margin-top: 1rem;
+    padding: 1.5rem;
 }
 
 #datosUsuarios{
     width: 100%;
     height: auto;
-    margin-top: 1rem;
     border-collapse: collapse;
 }
 
-/* #datosUsuarios th{
+#datosUsuarios th{
     padding: 1rem;
     font-size: 1rem;
     font-weight: bold;
-    background-color: #65c6d8;
-    border-radius:  15px 15px 0 0;
+    border: 1px solid #333;
     text-align: center;
+
 }
 
 #datosUsuarios tr{
@@ -96,7 +62,3 @@
     font-weight: bolder;
     
 }
-
-#h3-saludo{
-    font-size: 1.5rem;
-} */
