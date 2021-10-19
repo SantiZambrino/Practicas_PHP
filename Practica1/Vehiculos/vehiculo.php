@@ -22,41 +22,62 @@
 
         <?php
 
-            include "../biblioteca/funcionesZamoen.php";
+                include "../biblioteca/funcionesZamoen.php";
 
-            $conn = Conexion();
+                $conn = Conexion();
 
+                $dni = $_POST['pass_usu_login'];
 
-        ?>
+                $sqlFirst =  "SELECT nombre, apellidos, dni, telefono, email
+                                FROM lista_usuario
+                                WHERE dni = '$dni'";
 
-        <div class="container-form">
-             <!-- <form id="form-vehiculo" name="Vehiculo" method="post" action="#" >
+                $info = mysqli_query($conn, $sqlFirst);
+                    
+                if ($info === false) {
+                    echo mysqli_error($conn);
+                } 
+                else {
 
-                <input class="input-style" name="nombre" id="nombre" type="text" placeholder="Indique su nombre" />
-                <input class="input-style" name="dni" id="dni" type="text" placeholder="Indique su DNI" /><br><br>
-                <div class="box-btn">
-                    <button class="btn">Buscar</button>
-                    <button class="btn edit">Editar</button>
-                    <button class="btn newvh">Nuevo Vehiculo</button>
-        
-                </div>
-                
-            </form> -->
+                    if(!empty($dni)){
+                    ?>
+                        
+                        <div class="container-form">
+                        <table name="infoUsuarios" id="infoUsuarios">
+                        
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>DNI</th>
+                            <th>Telefono</th>
+                            <th>Email</th>
 
-            <h1>Esto es de prueba</h1>
+                            <tr>
 
-        </div>
+                            <?php
 
-        <?php
-        include "../biblioteca/funcionesZamoen.php";
+                            foreach ($info as $valor) {
+                                ?>
+                                   <td><?php echo $valor['nombre'] ; ?></td>
+                                    <td><?php echo $valor['apellidos'] ; ?></td>
+                                    <td><?php echo $valor['dni'] ; ?></td>
+                                    <td><?php echo $valor['telefono'] ; ?></td>
+                                    <td><?php echo $valor['email'] ; ?></td>
 
-        $conn = Conexion();
- 
+                                    <?php
+                                }
 
-        // $name = $_POST['nombre'];
-        $dni = $_POST['pass_usu_login'];
-
+                                ?>
+                                </tr>
+                               </table>
+                        </div>
     
+                            <?php
+         
+                    }      
+                }
+
+            
+
         $sql =  "SELECT matricula, marca, modelo, año
         FROM lista_vehiculos, lista_servicios
         WHERE id_usuario = (SELECT id_usuario
@@ -65,8 +86,6 @@
         AND lista_vehiculos.id_servicio = lista_servicios.id_servicio";
             
                 
-
-
         $results = mysqli_query($conn, $sql);
     
         if ($results === false) {
@@ -74,14 +93,11 @@
         } 
         else {
 
-                ?>
-            
-            <?php
             if(!empty($dni)){
             ?>
                 <div class="container-view">
 
-                <table name="datosUsuario" id="datosUsuarios">
+                <table name="datosUsuarios" id="datosUsuarios">
                 
                     <th>Matrícula</th>
                     <th>Marca</th>
@@ -107,25 +123,26 @@
                     </tr>
                     <?php
                 }
+
+                ?>
+                </table>
+                <div class="newvh">
+                <a href="../Vehiculos/newVehiculo.php" class="btn newvh">Nuevo Vehiculo</a>    
+                </div>
+                
+                <?php
                 
             }
-        
+    
         }
         mysqli_close($conn);
     
     ?>
-            </table>
-            <button class="btn newvh">Nuevo Vehiculo</button>
-
+            
 
         </div>
 
     </div>
-
-
-        
-    </div>
-
     
 
 </body>
