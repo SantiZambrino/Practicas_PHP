@@ -43,6 +43,7 @@
  
         $name = $_POST['nombre'];
         $dni = $_POST['dni'];
+        $k="";
         
         $name = strtolower($name);
     
@@ -53,9 +54,9 @@
                             FROM lista_usuario 
                             WHERE dni = '$dni')
         AND lista_vehiculos.id_servicio = lista_servicios.id_servicio";
-                
-                
 
+   
+      
 
         $results = mysqli_query($conn, $sql);
     
@@ -82,13 +83,16 @@
                 <?php
                 
                 foreach ($results as $valor) {
+                   
                     ?>
                     
                    <tr>
                         <?php
+
                         foreach ($valor as $k) {
+                            // print_r($valor["matricula"]);
                             ?>
-                           <td><a href="../Sevicios/Servicios.php?argumento1=<?php echo $name;?>&argumento2=<?php echo $dni;?>"><?php echo $k; ?></a></td>
+                           <td><a href="../Sevicios/Servicios.php?argumento1=<?php echo $name;?>&argumento2=<?php echo $dni;?>&argumento3=<?php echo ($valor["matricula"]);?>"><?php  echo $k ; ?></a></td>
                         
                             <?php
                         }
