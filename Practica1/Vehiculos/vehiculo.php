@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/styleHeader.css">
+   
     <link rel="stylesheet" href="../styles/styleVehiculo.css">
     <link rel="shortcut icon" href="../img/favicon-logo.png" />
     <title>Listado Vehiculos | Talleres Zamoen</title>
@@ -78,72 +79,72 @@
 
             
 
-        $sql =  "SELECT matricula, marca, modelo, año
-        FROM lista_vehiculos, lista_servicios
-        WHERE id_usuario = (SELECT id_usuario
-                            FROM lista_usuario 
-                            WHERE dni = '$dni')
-        AND lista_vehiculos.id_servicio = lista_servicios.id_servicio";
-            
-                
-        $results = mysqli_query($conn, $sql);
-    
-        if ($results === false) {
-            echo mysqli_error($conn);
-        } 
-        else {
-
-            if(!empty($dni)){
-            ?>
-                <div class="container-view">
-
-                <table name="datosUsuarios" id="datosUsuarios">
-                
-                    <th>Matrícula</th>
-                    <th>Marca</th>
-                    <th>Modelo</th>
-                    <th>Año</th>
-                  
-                
-                <?php
-                
-                foreach ($results as $valor) {
-                    ?>
+                $sql =  "SELECT matricula, marca, modelo, año
+                FROM lista_vehiculos, lista_servicios
+                WHERE id_usuario = (SELECT id_usuario
+                                    FROM lista_usuario 
+                                    WHERE dni = '$dni')
+                AND lista_vehiculos.id_servicio = lista_servicios.id_servicio";
                     
-                   <tr>
-                        <?php
-                        foreach ($valor as $k) {
-                            ?>
-                           <td><a href="../Sevicios/Servicios.php?argumento1=<?php echo $name;?>&argumento2=<?php echo $dni;?>"><?php echo $k; ?></a></td>
                         
+                $results = mysqli_query($conn, $sql);
+            
+                if ($results === false) {
+                    echo mysqli_error($conn);
+                } 
+                else {
+        
+                    if(!empty($dni)){
+                    ?>
+                        <div class="container-view">
+        
+                        <table name="datosUsuarios" id="datosUsuarios">
+                        
+                            <th>Matrícula</th>
+                            <th>Marca</th>
+                            <th>Modelo</th>
+                            <th>Año</th>
+                          
+                        
+                        <?php
+                        
+                        foreach ($results as $valor) {
+                            ?>
+                            
+                           <tr>
+                                <?php
+                                foreach ($valor as $k) {
+                                    ?>
+                                   <td><a href="../Sevicios/Servicios.php?argumento1=<?php echo $name;?>&argumento2=<?php echo $dni;?>"><?php echo $k; ?></a></td>
+                                
+                                    <?php
+                                }
+                                ?>
+                                
+                            </tr>
                             <?php
                         }
+        
                         ?>
+                        </table>
+                        <div class="newvh">
+                        <a href="../Vehiculos/newVehiculo.php" class="btn newvh">Nuevo Vehiculo</a>    
+                        </div>
                         
-                    </tr>
-                    <?php
-                }
-
-                ?>
-                </table>
-                <div class="newvh">
-                <a href="../Vehiculos/newVehiculo.php" class="btn newvh">Nuevo Vehiculo</a>    
-                </div>
-                
-                <?php
-                
-            }
-    
-        }
-        mysqli_close($conn);
-    
-    ?>
+                        <?php
+                        
+                    }
             
-
-        </div>
-
-    </div>
-    
-
-</body>
-</html>
+                }
+                mysqli_close($conn);
+            
+            ?>
+                    
+        
+                </div>
+        
+            </div>
+            
+        
+        </body>
+        </html>
