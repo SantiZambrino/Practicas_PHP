@@ -16,7 +16,7 @@
     <div class="outer-container">
 
         <header id="cabecera">
-            <a href="../Login/login.php">
+            <a href="../Vehiculos/vehiculo.php">
                 <img id="logo-taller" src="../img/Logo-Coche.png" alt="Logo Talleres Zamoen">
             </a>
         </header>
@@ -27,7 +27,7 @@
 
                 $conn = Conexion();
 
-                $dni = $_POST['pass_usu_login'];
+                $dni = $_POST['dni'];
 
                 $sqlFirst =  "SELECT nombre, apellidos, dni, telefono, email
                                 FROM lista_usuario
@@ -80,13 +80,12 @@
             
 
                 $sql =  "SELECT matricula, marca, modelo, año
-                FROM lista_vehiculos, lista_servicios
+                FROM lista_vehiculos
                 WHERE id_usuario = (SELECT id_usuario
                                     FROM lista_usuario 
-                                    WHERE dni = '$dni')
-                AND lista_vehiculos.id_servicio = lista_servicios.id_servicio";
+                                    WHERE dni = '$dni')";
                     
-                        
+            
                 $results = mysqli_query($conn, $sql);
             
                 if ($results === false) {
@@ -115,8 +114,7 @@
                                 <?php
                                 foreach ($valor as $k) {
                                     ?>
-                                   <td><a href="../Sevicios/Servicios.php?argumento1=<?php echo $name;?>&argumento2=<?php echo $dni;?>"><?php echo $k; ?></a></td>
-                                
+                                   <td><a href="../Sevicios/Servicios.php?argumento2=<?php echo $dni;?>&argumento3=<?php echo ($valor["matricula"]);?>"><?php  echo $k ; ?></a></td>
                                     <?php
                                 }
                                 ?>

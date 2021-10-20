@@ -15,7 +15,7 @@
     <div class="outer-container">
 
         <header id="cabecera">
-            <a href="../Login/login.php">
+            <a href="../Vehiculos/vehiculo.php">
                 <img id="logo-taller" src="../img/Logo-Coche.png" alt="Logo Talleres Zamoen">
             </a>
         </header>
@@ -40,7 +40,7 @@
                 <input name="year" id="year" type="date" placeholder="Año fabricación"  class="input-style"/>
 
                 <div class="box-btn">
-                <button  class="btn registrar" value="enviar">Registrar</button>
+                <button class="btn registrar" value="enviar">Registrar</button>
                 <button  class="btn reset" type="reset" value="reset">Borrar</button>
                 </div>
           
@@ -78,23 +78,11 @@
         
             if ($results == false) {
 
-                ?>
-                <script>
-                        alert('NO se ha agregado ningún vehiculo');
-                </script>
-                <?php
+            
             echo mysqli_error($conn);
             } 
-            else{
-
-                ?>
-                <script>
-                        alert('Agregado correctamente');
-                </script>
-                <?php
-            }
+           
         }
-
         mysqli_close($conn);
 
     ?>

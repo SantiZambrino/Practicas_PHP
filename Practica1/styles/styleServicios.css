@@ -1,0 +1,40 @@
+
+
+.container-view{ margin-top:  8rem;}
+
+#datosServicios{
+    margin-top: 2rem;
+    width: 78rem;
+    background-color: transparent;
+    border-collapse: collapse;
+}
+
+#datosUsuarios{
+    width: 100%;
+    height: auto;
+    border-collapse: collapse;
+ 
+}
+
+
+#datosUsuarios th, #datosServicios th{
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: 1px solid #333;
+    text-align: center;
+
+}
+
+#datosUsuarios tr, #datosServicios tr{
+    cursor: pointer;
+    text-align: left;
+}
+
+#datosUsuarios td,  #datosServicios td{
+    padding: 1rem;
+    font-size: 1.125rem;
+    border: 1px solid #333;
+    font-weight: bolder;
+    
+}

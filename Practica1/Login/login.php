@@ -14,7 +14,7 @@
     <div class="outer-container">
 
         <header id="cabecera">
-            <a href="../Login/login.php">
+            <a href="../Vehiculos/vehiculo.php">
                 <img id="logo-taller" src="../img/Logo-Coche.png" alt="Logo Talleres Zamoen">
             </a>
         </header>
@@ -24,7 +24,7 @@
             <form id="form-login" name="form-login" action="../Vehiculos\vehiculo.php" method="POST">
 
                 <input type="text" id="name_usu_login" class="input-style" name="name_usu_login" placeholder="Usuario...">
-                <input type="password" id="pass_usu_login" class="input-style" name="pass_usu_login" placeholder="Contraseña...">
+                <input type="password" id="dni" class="input-style" name="dni" placeholder="Contraseña...">
                 <img src="../img/invisible-passwd.png" alt="Mostrar Contraseña" id="mostrarContrasena">
           
                 <div class="box-btn">

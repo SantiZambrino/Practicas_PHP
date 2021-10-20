@@ -14,7 +14,7 @@
     <div class="outer-container">
 
         <header id="cabecera">
-            <a href="../Login/login.php">
+        <a href="../Vehiculos/vehiculo.php">
                 <img id="logo-taller" src="../img/Logo-Coche.png" alt="Logo Talleres Zamoen">
             </a>
         </header>
