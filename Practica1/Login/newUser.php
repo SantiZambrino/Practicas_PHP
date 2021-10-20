@@ -14,7 +14,7 @@
     <div class="outer-container">
 
         <header id="cabecera">
-        <a href="../Vehiculos/vehiculo.php">
+        <a href="../Vehiculos/vehiculo.php?dni=<?php echo $dni ?>">
                 <img id="logo-taller" src="../img/Logo-Coche.png" alt="Logo Talleres Zamoen">
             </a>
         </header>
@@ -30,7 +30,7 @@
                 <input type="text" id="apellidos_usu" class="input-style" name="apellidos_usu">
 
                 <label for="dni-usu">DNI</label>
-                <input type="text" id="dni_usu" class="input-style" name="dni_usu">
+                <input type="text" id="dni" class="input-style" name="dni">
 
                 <label for="telefono-usu">Telefono</label>
                 <input type="tel" id="telefono_usu" class="input-style" name="telefono_usu">
@@ -57,7 +57,7 @@
 
         $nombre = $_POST['nombre_usu'];
         $apellidos = $_POST['apellidos_usu'];
-        $dni = $_POST['dni_usu'];
+        $dni = $_POST['dni'];
         $telefono = $_POST['telefono_usu'];
         $email = $_POST['email_usu'];
 
