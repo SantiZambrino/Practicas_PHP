@@ -69,7 +69,7 @@
 
         if(!empty($matricula) && !empty($modelo) && !empty($year) ){
 
-            $sql =  "INSERT INTO lista_vehiculos (matricula, marca, modelo, año, id_servicio, id_usuario) VALUES ( '$matricula', '$marca', '$modelo', '$year', 3, $id_usuario)";
+            $sql =  "INSERT INTO lista_vehiculos (matricula, marca, modelo, año, id_usuario) VALUES ( '$matricula', '$marca', '$modelo', '$year', $id_usuario)";
 
             echo $sql;
 

@@ -36,7 +36,7 @@
 
         $sql2 =  "SELECT tipo_servicio, descripcion
         FROM lista_servicios
-        WHERE id_servicio = (select id_servicio FROM lista_vehiculos
+        WHERE id_matricula = (select id_matricula FROM lista_vehiculos
         WHERE matricula = '$matricula')";
 
     
