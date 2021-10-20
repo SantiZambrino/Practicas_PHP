@@ -27,11 +27,17 @@
 
                 $conn = Conexion();
 
-                $dni = $_POST['dni'];
+                // $dni = $_POST['dni'];
 
                 $sqlFirst =  "SELECT nombre, apellidos, dni, telefono, email
                                 FROM lista_usuario
-                                WHERE dni = '$dni'";
+                                WHERE dni = ".$_GET['dni'];
+
+                ?>
+
+                    <script> alert("He pasado la consulta con el GET")</script>
+
+                <?php
 
                 $info = mysqli_query($conn, $sqlFirst);
                     
@@ -79,61 +85,6 @@
 
             
 
-                $sql =  "SELECT matricula, marca, modelo, año
-                FROM lista_vehiculos
-                WHERE id_usuario = (SELECT id_usuario
-                                    FROM lista_usuario 
-                                    WHERE dni = '$dni')";
-                    
-            
-                $results = mysqli_query($conn, $sql);
-            
-                if ($results === false) {
-                    echo mysqli_error($conn);
-                } 
-                else {
-        
-                    if(!empty($dni)){
-                    ?>
-                        <div class="container-view">
-        
-                        <table name="datosUsuarios" id="datosUsuarios">
-                        
-                            <th>Matrícula</th>
-                            <th>Marca</th>
-                            <th>Modelo</th>
-                            <th>Año</th>
-                          
-                        
-                        <?php
-                        
-                        foreach ($results as $valor) {
-                            ?>
-                            
-                           <tr>
-                                <?php
-                                foreach ($valor as $k) {
-                                    ?>
-                                   <td><a href="../Sevicios/Servicios.php?argumento2=<?php echo $dni;?>&argumento3=<?php echo ($valor["matricula"]);?>"><?php  echo $k ; ?></a></td>
-                                    <?php
-                                }
-                                ?>
-                                
-                            </tr>
-                            <?php
-                        }
-        
-                        ?>
-                        </table>
-                        <div class="newvh">
-                        <a href="../Vehiculos/newVehiculo.php" class="btn newvh">Nuevo Vehiculo</a>    
-                        </div>
-                        
-                        <?php
-                        
-                    }
-            
-                }
                 mysqli_close($conn);
             
             ?>

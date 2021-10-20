@@ -70,6 +70,10 @@
             if ($results === false) {
             echo mysqli_error($conn);
             }
+            else{
+
+                header('Location: http://localhost:8080/Practicas_PHP/Practica1/Vehiculos/vehiculo.php');
+            }
         }
 
         mysqli_close($conn);

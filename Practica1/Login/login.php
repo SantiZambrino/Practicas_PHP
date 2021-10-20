@@ -21,7 +21,7 @@
 
         <div class="container-login">
 
-            <form id="form-login" name="form-login" action="../Vehiculos\vehiculo.php" method="POST">
+            <form id="form-login" name="form-login" method="POST">
 
                 <input type="text" id="name_usu_login" class="input-style" name="name_usu_login" placeholder="Usuario...">
                 <input type="password" id="dni" class="input-style" name="dni" placeholder="Contraseña...">
@@ -37,6 +37,50 @@
         </div>
     
     </div>
+
+    <?php
+
+        include "../biblioteca/funcionesZamoen.php";
+
+        $conn = Conexion();
+        
+        $usuario = $_POST['name_usu_login'];
+        $dni = $_POST['dni'];
+
+        if (!empty($usuario) && !empty($dni)){
+
+            $sql = "SELECT * FROM lista_usuario WHERE nombre = '$usuario' AND dni = '$dni'";
+
+            $result = mysqli_query ($conn, $sql);   
+
+            if (!$result){
+                echo "<h1>ERROR</h1>";
+                exit;
+            }
+            else{
+                
+                if(mysqli_fetch_assoc($result) > 0){
+                        
+                    header('Location: http://localhost:8080/Practicas_PHP/Practica1/Vehiculos/vehiculo.php?dni='.$dni);
+                }
+                else{
+
+                    exit;
+                }
+
+                
+
+            }
+
+        }
+
+
+
+
+
+
+
+    ?>
 
     <script>
         
