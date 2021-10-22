@@ -60,8 +60,8 @@
             else{
                 
                 if(mysqli_fetch_assoc($result) > 0){
-                        
-                    header('Location: http://localhost:8080/Practicas_PHP/Practica1/Vehiculos/vehiculo.php?dni='.$dni);
+
+                    header('Location: http://localhost:8080/Practicas_PHP/Practica1/Vehiculos/vehiculo.php?dni='.$dni );
                 }
                 else{
 
@@ -73,11 +73,6 @@
             }
 
         }
-
-
-
-
-
 
 
     ?>

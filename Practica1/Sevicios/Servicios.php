@@ -16,7 +16,7 @@
     <div class="outer-container">
 
         <header id="cabecera">
-        <a href="../Vehiculos/vehiculo.php">
+        <a href="../Vehiculos/vehiculo.php?dni=<?php echo $_GET['dni']; ?>">
                 <img id="logo-taller" src="../img/Logo-Coche.png" alt="Logo Talleres Zamoen">
             </a>
         </header>
@@ -27,8 +27,8 @@
 
         $conn = Conexion();
 
-        $dni = $_GET['argumento2'];
-        $matricula = $_GET['argumento3'];
+        $dni = $_GET['dni'];
+        $matricula = $_GET['matricula'];
 
         $sql =  "SELECT matricula, marca, modelo, año
         FROM lista_vehiculos
@@ -51,9 +51,6 @@
         } 
         else {
 
-                ?>
-            
-            <?php
             if(!empty($matricula)){
             ?>
                 <div class="container-view">
@@ -97,7 +94,7 @@
    
 
                         <?php
-                        if(!empty($matricula)){
+                        // if(!empty($matricula)){
                         ?>
        
 
@@ -126,7 +123,7 @@
                                 <?php
                             }
                             
-                        }
+                        // }
                     
 
                     mysqli_close($conn);
@@ -136,7 +133,7 @@
 
                         </table>
                         <div class="newvh">
-                            <a href="../Sevicios/newServicio.php" class="btn newvh">Nuevo Servicio</a>    
+                            <a href="../Sevicios/newServicio.php?dni=<?php echo $_GET['dni']?>&matricula=<?php echo $_GET['matricula']?>"  class="btn newvh">Nuevo Servicio</a>    
                         </div>
         
         </div>

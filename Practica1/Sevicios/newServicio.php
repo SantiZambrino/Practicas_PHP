@@ -14,7 +14,7 @@
     <div class="outer-container">
 
         <header id="cabecera">
-            <a href="../Vehiculos/vehiculo.php">
+            <a href="../Vehiculos/vehiculo.php?dni=<?php echo $_GET['dni']; ?>">
                 <img id="logo-taller" src="../img/Logo-Coche.png" alt="Logo Talleres Zamoen">
             </a>
         </header>
@@ -23,8 +23,8 @@
 
             <form id="form-new-servicio" name="form-new-servicio" method="post" >
 
-                <label for="matricula">Matrícula</label>
-                <input name="matricula" id="matricula"  type="text" placeholder="Por favor, indique su matrícula" class="input-style" />
+                <!-- <label for="matricula">Matrícula</label>
+                <input name="matricula" id="matricula"  type="text" placeholder="Por favor, indique su matrícula" class="input-style" /> -->
         
                 <label for="servicio">Tipo de Servicio</label>
                 <input name="servicio" id="servicio"  type="text" placeholder="Por favor, indique el servicio" class="input-style" />
@@ -50,7 +50,8 @@
 
         $conn = Conexion();
 
-        $matricula = $_POST['matricula'];
+        $dni = $_GET['dni'];
+        $matricula = $_GET['matricula'];
         $tipoServicio = $_POST['servicio'];
         $descripcionServicio = $_POST['descripcion'];
 
@@ -73,6 +74,9 @@
               
             echo mysqli_error($conn);
             } 
+            else{
+                header('Location: http://localhost:8080/Practicas_PHP/Practica1/Vehiculos/vehiculo.php?dni='.$dni );
+            }
          
         }
 

@@ -16,7 +16,7 @@
     <div class="outer-container">
 
         <header id="cabecera">
-            <a href="../Vehiculos/vehiculo.php">
+            <a href="#">
                 <img id="logo-taller" src="../img/Logo-Coche.png" alt="Logo Talleres Zamoen">
             </a>
         </header>
@@ -27,17 +27,11 @@
 
                 $conn = Conexion();
 
-                // $dni = $_POST['dni'];
+                $dni = $_GET['dni'];
 
                 $sqlFirst =  "SELECT nombre, apellidos, dni, telefono, email
                                 FROM lista_usuario
-                                WHERE dni = ".$_GET['dni'];
-
-                ?>
-
-                    <script> alert("He pasado la consulta con el GET")</script>
-
-                <?php
+                                WHERE dni = '$dni'";
 
                 $info = mysqli_query($conn, $sqlFirst);
                     
@@ -46,7 +40,6 @@
                 } 
                 else {
 
-                    if(!empty($dni)){
                     ?>
                         
                         <div class="container-form">
@@ -66,7 +59,7 @@
                                 ?>
                                    <td><?php echo $valor['nombre'] ; ?></td>
                                     <td><?php echo $valor['apellidos'] ; ?></td>
-                                    <td><?php echo $valor['dni'] ; ?></td>
+                                    <td><?php echo  $_GET['dni'] ; ?></td>
                                     <td><?php echo $valor['telefono'] ; ?></td>
                                     <td><?php echo $valor['email'] ; ?></td>
 
@@ -94,7 +87,6 @@
                             } 
                             else {
 
-                                if(!empty($dni)){
                                 ?>
                                     <div class="container-view">
 
@@ -115,7 +107,7 @@
                                             <?php
                                             foreach ($valor as $k) {
                                                 ?>
-                                            <td><a href="../Sevicios/Servicios.php?argumento2=<?php echo $dni;?>&argumento3=<?php echo ($valor["matricula"]);?>"><?php  echo $k ; ?></a></td>
+                                            <td><a href="../Sevicios/Servicios.php?dni=<?php echo $_GET['dni'];?>&matricula=<?php echo ($valor["matricula"]);?>"><?php  echo $k ; ?></a></td>
                                                 <?php
                                             }
                                             ?>
@@ -127,16 +119,16 @@
                                     ?>
                                     </table>
                                     <div class="newvh">
-                                    <a href="../Vehiculos/newVehiculo.php" class="btn newvh">Nuevo Vehiculo</a>    
+                                    <a href="../Vehiculos/newVehiculo.php?dni=<?php echo $_GET['dni']?>"; class="btn newvh">Nuevo Vehiculo</a>    
                                     </div>
                                     
                                     <?php
                                     
-                                }
+                            
 
                             }
             
-                        }      
+        
                     }
 
             
