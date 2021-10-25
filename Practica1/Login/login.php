@@ -96,8 +96,8 @@ if (!empty( $_POST['dni']) && !empty($_POST['contra_usu_login'])){
                     }
                     else{
 
-                        // header('Location: ../Vehiculos/vehiculo.php?dni='.$dni );
-                        header('Location: ../Vehiculos/vehiculo.php');
+                        header('Location: ../Vehiculos/vehiculo.php?dni='.$dni );
+                      
                     }
 
                 }

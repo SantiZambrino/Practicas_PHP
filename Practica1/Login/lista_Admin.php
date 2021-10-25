@@ -57,9 +57,8 @@
                     <?php
                     foreach ($valor as $k) {
                                         
-                        
                         ?>
-                        <td><?php  echo $k ; ?></td>
+                        <td><a href="../Vehiculos/vehiculo.php?dni=<?php echo $valor['dni'];?>"><?php  echo $k ; ?></a></td>
                         <?php
 
                     }

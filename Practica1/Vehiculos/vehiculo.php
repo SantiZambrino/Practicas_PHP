@@ -27,9 +27,7 @@
 
         $conn = Conexion();
 
-        session_start();
-
-        $dni = $_SESSION['dni'];
+        $dni = $_GET['dni'];
 
         $sqlFirst =  "SELECT nombre, apellidos, dni, telefono, email
                             FROM lista_usuario
@@ -120,7 +118,7 @@
                     ?>
                     </table>
                                 <div class="newvh">
-                                    <a href="../Vehiculos/newVehiculo.php?dni=<?php echo $_GET['dni']?>"; class="btn newvh">Nuevo Vehiculo</a>    
+                                    <a href="../Vehiculos/newVehiculo.php?dni=<?php echo $_GET['dni'];?>" class="btn newvh">Nuevo Vehiculo</a>    
                                 </div>       
                                 <?php
 
