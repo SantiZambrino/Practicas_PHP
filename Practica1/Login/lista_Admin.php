@@ -57,9 +57,11 @@
                     <?php
                     foreach ($valor as $k) {
                                         
+                        
                         ?>
                         <td><?php  echo $k ; ?></td>
                         <?php
+
                     }
 
                     ?>

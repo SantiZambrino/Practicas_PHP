@@ -27,7 +27,9 @@
 
         $conn = Conexion();
 
-        $dni = $_GET['dni'];
+        session_start();
+
+        $dni = $_SESSION['dni'];
 
         $sqlFirst =  "SELECT nombre, apellidos, dni, telefono, email
                             FROM lista_usuario

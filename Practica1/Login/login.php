@@ -85,16 +85,19 @@ if (!empty( $_POST['dni']) && !empty($_POST['contra_usu_login'])){
             else{
                 
                 if($valores = mysqli_fetch_array($result)){
-                    
+
                     $_SESSION['id_admin'] = $valores['id_admin'];
+                    
+                    $_SESSION['dni'] = $valores['dni'];
 
                     if($valores['id_admin'] == 1){
 
-                        header('Location: https://wwww.google.es');
+                        header('Location: lista_Admin.php');
                     }
                     else{
 
-                        header('Location: ../Vehiculos/vehiculo.php?dni='.$dni );
+                        // header('Location: ../Vehiculos/vehiculo.php?dni='.$dni );
+                        header('Location: ../Vehiculos/vehiculo.php');
                     }
 
                 }
