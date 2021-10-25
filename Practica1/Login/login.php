@@ -65,6 +65,11 @@
         include "../biblioteca/funcionesZamoen.php";
 
         $conn = Conexion();
+        //Creo variable donde se guardara la fecha
+        //https://www.youtube.com/watch?v=fA1eo4Mdwjs
+        $date = new DateTime();
+        $galletita = setcookie("fecha", ".$date.", time(), 84600);
+        echo $galletita;
         
         if (!empty( $_POST['dni']) && !empty($_POST['contra_usu_login'])){
             
