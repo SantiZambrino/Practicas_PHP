@@ -12,7 +12,7 @@
     <title>Listado Servicios | Talleres Zamoen</title>
 </head>
 <body>
-
+    <!-- Al darle click en la cabecera ira a la pagina vehiculos.php-->
     <div class="outer-container">
 
         <header id="cabecera">
@@ -21,19 +21,19 @@
             </a>
         </header>
 
-
+    <!-- incluimos la carpeta con la funcion para conectar a la base de datos -->
         <?php
         include "../biblioteca/funcionesZamoen.php";
-
+    // Guardamos la funcion conexion en una variable
         $conn = Conexion();
-
+    //Guardamos en variables los argumentos que cogimos de la pagina vehiculos para luego utilizarlos en consultas
         $dni = $_GET['argumento2'];
         $matricula = $_GET['argumento3'];
-
+    //Realizamos la consulta que nos devuelve los datos del vehiculo seleccionado anteriormente
         $sql =  "SELECT matricula, marca, modelo, año
         FROM lista_vehiculos
         WHERE matricula = '$matricula'";
-
+    //Consulta que devuelve el servicio y su descripcion
         $sql2 =  "SELECT tipo_servicio, descripcion
         FROM lista_servicios
         WHERE id_matricula = (select id_matricula FROM lista_vehiculos
@@ -41,11 +41,11 @@
 
     
 
-       
+    //Guardamos las consulatas y la conexion en dos variables       
         $results = mysqli_query($conn, $sql);
         $results2 = mysqli_query($conn, $sql2);
        
-    
+    //Si hay algun error salta el error 
         if ($results === false) {
             echo mysqli_error($conn);
         } 

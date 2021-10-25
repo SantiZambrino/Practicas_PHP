@@ -54,7 +54,6 @@
         include "../biblioteca/funcionesZamoen.php";
 
         $conn = Conexion();
-
         $nombre = $_POST['nombre_usu'];
         $apellidos = $_POST['apellidos_usu'];
         $dni = $_POST['dni_usu'];
