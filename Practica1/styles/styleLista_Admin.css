@@ -23,7 +23,7 @@ a{
 }
 
 #infoUsuarios{
-    margin-top: 8rem;
+    margin-top: 6rem;
     width: 80rem;
     background-color: rgb(255, 255, 255, .8); 
     display: flex;
@@ -33,22 +33,14 @@ a{
     padding: 1.5rem 1rem;
     border-collapse: collapse;
 }
+
 .container-view{
     width: 80rem;
     height: auto;
     background-color: rgb(255, 255, 255, .8);
     padding: .4rem 1rem;
 }
-
-#datosUsuarios{
-    width: 100%;
-    height: auto;
-    border-collapse: collapse;
- 
-}
-
-
-#datosUsuarios th, #infoUsuarios th{
+#infoUsuarios th{
     padding: 1rem;
     font-size: 1rem;
     font-weight: bold;
@@ -56,24 +48,19 @@ a{
     text-align: center;
 
 }
-
-#datosUsuarios tr, #infoUsuarios tr{
+#infoUsuarios tr{
     cursor: pointer;
     text-align: right;
+    
 }
 
-#datosUsuarios td,  #infoUsuarios td{
+#infoUsuarios td{
     padding: 1rem;
     font-size: 1.125rem;
     border: 1px solid #333;
     font-weight: bolder;
+    width: 80rem;
     
-}
-
-#form-vehiculo{
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
 }
 
 .input-style{

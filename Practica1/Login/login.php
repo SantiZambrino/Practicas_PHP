@@ -62,7 +62,7 @@
  
  <?php
 
-        include "../biblioteca/funcionesZamoen.php";
+include "../biblioteca/funcionesZamoen.php";
 
         $conn = Conexion();
         //Creo variable donde se guardara la fecha
@@ -81,14 +81,28 @@
 
             $result = mysqli_query ($conn, $sql);   
 
+            
             if (!$result){
                 exit;
             }
             else{
                 
-                if(mysqli_fetch_assoc($result) > 0){
+                if($valores = mysqli_fetch_array($result)){
 
-                    header('Location: ../Vehiculos/vehiculo.php?dni='.$dni );
+                    $_SESSION['id_admin'] = $valores['id_admin'];
+                    
+                    $_SESSION['dni'] = $valores['dni'];
+
+                    if($valores['id_admin'] == 1){
+
+                        header('Location: lista_Admin.php');
+                    }
+                    else{
+
+                        header('Location: ../Vehiculos/vehiculo.php?dni='.$dni );
+                      
+                    }
+
                 }
                 else{
 
