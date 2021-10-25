@@ -47,7 +47,7 @@
         if (!empty( $_POST['dni']) && !empty($_POST['contra_usu_login'])){
             
             $dni = $_POST['dni'];
-            $contra = $_POST['contra_usu_login'];
+            $contra = md5($_POST['contra_usu_login']);
 
             
             $sql = "SELECT * FROM lista_usuario WHERE contrasena = '$contra' AND dni = '$dni'";
