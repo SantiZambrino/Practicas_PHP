@@ -73,7 +73,7 @@
 
             echo mysqli_error($conn);
             } else{
-                header('Location: http://localhost:8080/Practicas_PHP/Practica1/Vehiculos/vehiculo.php?dni='.$_GET['dni'] );
+                header('Location: ../Vehiculos/vehiculo.php?dni='.$_GET['dni'] );
             }
         }
         mysqli_close($conn);

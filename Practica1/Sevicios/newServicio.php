@@ -66,7 +66,7 @@
             } 
             else{
 
-                header('Location: http://localhost:8080/Practicas_PHP/Practica1/Vehiculos/vehiculo.php?dni='.$dni );
+                header('Location: ../Vehiculos/vehiculo.php?dni='.$dni );
             }
         }
 
