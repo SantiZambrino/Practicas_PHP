@@ -15,7 +15,7 @@
     <div class="outer-container">
 
         <header id="cabecera">
-            <a href="../Vehiculos/vehiculo.php">
+            <a href="../Vehiculos/vehiculo.php?dni=<?php echo $_GET['dni']; ?>">
                 <img id="logo-taller" src="../img/Logo-Coche.png" alt="Logo Talleres Zamoen">
             </a>
         </header>
@@ -23,9 +23,6 @@
         <div class="container-login-vehiculo">
 
             <form id="form-new-vehiculo" name="form-new-vehiculo" method="post" action="#">
-
-                <label for="dni">DNI</label>
-                <input name="dni" id="dni"  type="text" placeholder="Por favor, indique DNI" class="input-style" />
         
                 <label for="matricula">Matricula</label>
                 <input name="matricula" id="matricula"  type="text" placeholder="Por favor, indique matricula" class="input-style" />
@@ -56,7 +53,7 @@
 
         $conn = Conexion();
 
-        $dni = $_POST['dni'];
+        $dni = $_GET['dni'];
 
         $id_usuario = "(SELECT id_usuario FROM lista_usuario
                                 WHERE dni = '$dni ' )"; 
@@ -66,26 +63,20 @@
         $modelo = $_POST['modelo'];
         $year = $_POST['year'];
 
-
         if(!empty($matricula) && !empty($modelo) && !empty($year) ){
 
             $sql =  "INSERT INTO lista_vehiculos (matricula, marca, modelo, año, id_usuario) VALUES ( '$matricula', '$marca', '$modelo', '$year', $id_usuario)";
-
-            echo $sql;
-
-                
+     
             $results = mysqli_query($conn, $sql);
         
             if ($results == false) {
 
-            
             echo mysqli_error($conn);
-            } 
-           
+            } else{
+                header('Location: http://localhost:8080/Practicas_PHP/Practica1/Vehiculos/vehiculo.php?dni='.$_GET['dni'] );
+            }
         }
         mysqli_close($conn);
-
-    ?>
-    
+    ?>  
 </body>
 </html>

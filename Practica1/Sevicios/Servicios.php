@@ -16,7 +16,7 @@
     <div class="outer-container">
 
         <header id="cabecera">
-        <a href="../Vehiculos/vehiculo.php">
+        <a href="../Vehiculos/vehiculo.php?dni=<?php echo $_GET['dni']; ?>">
                 <img id="logo-taller" src="../img/Logo-Coche.png" alt="Logo Talleres Zamoen">
             </a>
         </header>
@@ -27,8 +27,8 @@
     // Guardamos la funcion conexion en una variable
         $conn = Conexion();
     //Guardamos en variables los argumentos que cogimos de la pagina vehiculos para luego utilizarlos en consultas
-        $dni = $_GET['argumento2'];
-        $matricula = $_GET['argumento3'];
+        $dni = $_GET['dni'];
+        $matricula = $_GET['matricula'];
     //Realizamos la consulta que nos devuelve los datos del vehiculo seleccionado anteriormente
         $sql =  "SELECT matricula, marca, modelo, año
         FROM lista_vehiculos
@@ -51,69 +51,52 @@
         } 
         else {
 
-                ?>
-            
-            <?php
             if(!empty($matricula)){
-            ?>
+
+                ?>
                 <div class="container-view">
 
-                <table name="datosUsuario" id="datosUsuarios">
-                
-                    <th>Matrícula</th>
-                    <th>Marca</th>
-                    <th>Modelo</th>
-                    <th>Año</th>
-                  
-                
+                    <table name="datosUsuario" id="datosUsuarios">
+                    
+                        <th>Matrícula</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Año</th>
+
                 <?php
                 
                 foreach ($results as $valor) {
-                    ?>
-                    
-                   <tr>
-                        <?php
-                        foreach ($valor as $k) {
-                            ?>
-                           <td><?php echo $k; ?></td>
-                            <?php
-                        }
+
                         ?>
-                        
-                    </tr>
-                    <?php
+                        <tr>
+                            <?php
+                            foreach ($valor as $k) {
+                                ?>
+                            <td><?php echo $k; ?></td>
+                                <?php
+                            }
+                            ?>
+                        </tr>
+                        <?php
                 }
-                
             }
-        
         }
-
-    
-    ?>
-
-            </table>
+                    ?>
+                    </table>
 
 <!-- Segunda consulta -->
    
-
-                        <?php
-                        if(!empty($matricula)){
-                        ?>
-       
-
-                            <table name="datosServicios" id="datosServicios">
-                            
-                                <th>Tipo Servicio</th>
-                                <th>Descripcion</th>
-            
-                            
-                            
+                        <table name="datosServicios" id="datosServicios">
+                    
+                            <th>Tipo Servicio</th>
+                            <th>Descripcion</th>
+                        
                             <?php
                             
                             foreach ($results2 as $valor) {
-                                ?>
                                 
-                            <tr>
+                                ?>
+                                <tr>
                                     <?php
                                     foreach ($valor as $j) {
                                         ?>
@@ -121,27 +104,20 @@
                                         <?php
                                     }
                                     ?>
-                                    
                                 </tr>
                                 <?php
                             }
-                            
-                        }
-                    
 
                     mysqli_close($conn);
 
-
                 ?>
 
-                        </table>
+                    </table>
                         <div class="newvh">
-                            <a href="../Sevicios/newServicio.php" class="btn newvh">Nuevo Servicio</a>    
+                            <a href="../Sevicios/newServicio.php?dni=<?php echo $_GET['dni']?>&matricula=<?php echo $_GET['matricula']?>"  class="btn newvh">Nuevo Servicio</a>    
                         </div>
         
-        </div>
-
-    
+                </div>
 
 </body>
 </html>

@@ -7,9 +7,10 @@
         $db_pass = "1234";
 
 
-        $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
-
-        if (mysqli_connect_error()) {
+        try{
+            $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+        }
+        catch(PDOException $e){
 
             echo 'FALLO EN LA CONEXIÓN';
             echo mysqli_connect_error();
