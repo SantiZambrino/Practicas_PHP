@@ -59,7 +59,7 @@ a{
 
 #datosUsuarios tr, #infoUsuarios tr{
     cursor: pointer;
-    text-align: left;
+    text-align: right;
 }
 
 #datosUsuarios td,  #infoUsuarios td{

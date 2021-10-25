@@ -28,7 +28,7 @@
 
 #datosUsuarios tr, #datosServicios tr{
     cursor: pointer;
-    text-align: left;
+    text-align: right;
 }
 
 #datosUsuarios td,  #datosServicios td{
