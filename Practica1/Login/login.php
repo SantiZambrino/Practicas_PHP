@@ -14,22 +14,22 @@
     <div class="outer-container">
 
         <header id="cabecera">
-            <a href="../Vehiculos/vehiculo.php">
+                <a href="#">
                 <img id="logo-taller" src="../img/Logo-Coche.png" alt="Logo Talleres Zamoen">
             </a>
         </header>
 
         <div class="container-login">
-
+            
             <form id="form-login" name="form-login" method="POST">
 
-                <input type="text" id="name_usu_login" class="input-style" name="name_usu_login" placeholder="Usuario...">
-                <input type="password" id="dni" class="input-style" name="dni" placeholder="Contraseña...">
+                <input type="text" id="dni" class="input-style" name="dni" placeholder="Usuario...">
+                <input type="password" id="contra_usu_login" class="input-style" name="contra_usu_login" placeholder="Contraseña...">
                 <img src="../img/invisible-passwd.png" alt="Mostrar Contraseña" id="mostrarContrasena">
           
                 <div class="box-btn">
-                <input type="submit" class="btn submit" value="Enviar">
-                <a  class="btn newUser" href="../Login/newUser.php">Nuevo Usuario</a>
+                    <input type="submit" class="btn submit" value="Enviar">
+                    <a  class="btn newUser" href="../Login/newUser.php">Nuevo Usuario</a>
                 </div>
           
             </form>
@@ -44,17 +44,17 @@
 
         $conn = Conexion();
         
-        $usuario = $_POST['name_usu_login'];
-        $dni = $_POST['dni'];
+        if (!empty( $_POST['dni']) && !empty($_POST['contra_usu_login'])){
+            
+            $dni = $_POST['dni'];
+            $contra = $_POST['contra_usu_login'];
 
-        if (!empty($usuario) && !empty($dni)){
-
-            $sql = "SELECT * FROM lista_usuario WHERE nombre = '$usuario' AND dni = '$dni'";
+            
+            $sql = "SELECT * FROM lista_usuario WHERE contrasena = '$contra' AND dni = '$dni'";
 
             $result = mysqli_query ($conn, $sql);   
 
             if (!$result){
-                echo "<h1>ERROR</h1>";
                 exit;
             }
             else{
@@ -66,21 +66,15 @@
                 else{
 
                     exit;
-                }
-
-                
-
+                }            
             }
-
         }
-
-
     ?>
 
     <script>
         
         var mostrarContrasena = document.getElementById("mostrarContrasena");
-        var mostrar = document.getElementById("pass_usu_login");
+        var mostrar = document.getElementById("contra_usu_login");
 
         mostrarContrasena.addEventListener('click', function(e){
 

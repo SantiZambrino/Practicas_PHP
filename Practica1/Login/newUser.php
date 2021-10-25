@@ -32,11 +32,15 @@
                 <label for="dni-usu">DNI</label>
                 <input type="text" id="dni" class="input-style" name="dni">
 
+                <label for="contrasena-usu">Contraseña</label>
+                <input type="text" id="contra_usu" class="input-style" name="contra_usu">
+
                 <label for="telefono-usu">Telefono</label>
                 <input type="tel" id="telefono_usu" class="input-style" name="telefono_usu">
 
                 <label for="email-usu">Email</label>
                 <input type="email" id="email_usu" class="input-style" name="email_usu">
+
           
                 <div class="box-btn">
                 <button  class="btn registrar" value="enviar" onclick="reenviar()">Registrar</button>
@@ -60,10 +64,11 @@
         $dni = $_POST['dni'];
         $telefono = $_POST['telefono_usu'];
         $email = $_POST['email_usu'];
+        $contra = $_POST['contra_usu'];
 
-        if(!empty($nombre) && !empty($apellidos) && !empty($dni) && !empty($telefono) && !empty($email)){
+        if(!empty($nombre) && !empty($apellidos) && !empty($dni) && !empty($telefono) && !empty($email) &&  !empty($contra)){
 
-            $sql =  "INSERT INTO lista_usuario (nombre, apellidos, dni, telefono, email) VALUES ('$nombre', '$apellidos', '$dni', '$telefono', '$email')";
+            $sql =  "INSERT INTO lista_usuario (nombre, apellidos, dni, telefono, email, contrasena) VALUES ('$nombre', '$apellidos', '$dni', '$telefono', '$email', '$contra')";
                 
             $results = mysqli_query($conn, $sql);
         

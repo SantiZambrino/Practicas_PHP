@@ -21,8 +21,7 @@
             </a>
         </header>
 
-
-        <?php
+    <?php
         include "../biblioteca/funcionesZamoen.php";
 
         $conn = Conexion();
@@ -38,79 +37,61 @@
         FROM lista_servicios
         WHERE id_matricula = (select id_matricula FROM lista_vehiculos
         WHERE matricula = '$matricula')";
-
-    
-
-       
+   
         $results = mysqli_query($conn, $sql);
         $results2 = mysqli_query($conn, $sql2);
-       
-    
+
         if ($results === false) {
             echo mysqli_error($conn);
         } 
         else {
 
             if(!empty($matricula)){
-            ?>
+
+                ?>
                 <div class="container-view">
 
-                <table name="datosUsuario" id="datosUsuarios">
-                
-                    <th>Matrícula</th>
-                    <th>Marca</th>
-                    <th>Modelo</th>
-                    <th>Año</th>
-                  
-                
+                    <table name="datosUsuario" id="datosUsuarios">
+                    
+                        <th>Matrícula</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Año</th>
+
                 <?php
                 
                 foreach ($results as $valor) {
-                    ?>
-                    
-                   <tr>
-                        <?php
-                        foreach ($valor as $k) {
-                            ?>
-                           <td><?php echo $k; ?></td>
-                            <?php
-                        }
+
                         ?>
-                        
-                    </tr>
-                    <?php
+                        <tr>
+                            <?php
+                            foreach ($valor as $k) {
+                                ?>
+                            <td><?php echo $k; ?></td>
+                                <?php
+                            }
+                            ?>
+                        </tr>
+                        <?php
                 }
-                
             }
-        
         }
-
-    
-    ?>
-
-            </table>
+                    ?>
+                    </table>
 
 <!-- Segunda consulta -->
    
-
-                        <?php
-                        // if(!empty($matricula)){
-                        ?>
-       
-
-                            <table name="datosServicios" id="datosServicios">
-                            
-                                <th>Tipo Servicio</th>
-                                <th>Descripcion</th>
-            
-                            
-                            
+                        <table name="datosServicios" id="datosServicios">
+                    
+                            <th>Tipo Servicio</th>
+                            <th>Descripcion</th>
+                        
                             <?php
                             
                             foreach ($results2 as $valor) {
-                                ?>
                                 
-                            <tr>
+                                ?>
+                                <tr>
                                     <?php
                                     foreach ($valor as $j) {
                                         ?>
@@ -118,27 +99,20 @@
                                         <?php
                                     }
                                     ?>
-                                    
                                 </tr>
                                 <?php
                             }
-                            
-                        // }
-                    
 
                     mysqli_close($conn);
 
-
                 ?>
 
-                        </table>
+                    </table>
                         <div class="newvh">
                             <a href="../Sevicios/newServicio.php?dni=<?php echo $_GET['dni']?>&matricula=<?php echo $_GET['matricula']?>"  class="btn newvh">Nuevo Servicio</a>    
                         </div>
         
-        </div>
-
-    
+                </div>
 
 </body>
 </html>
