@@ -63,7 +63,7 @@
         $dni = $_POST['dni'];
         $telefono = $_POST['telefono_usu'];
         $email = $_POST['email_usu'];
-        $contra = $_POST['contra_usu'];
+        $contra = md5($_POST['contra_usu']);
 
         if(!empty($nombre) && !empty($apellidos) && !empty($dni) && !empty($telefono) && !empty($email) &&  !empty($contra)){
 

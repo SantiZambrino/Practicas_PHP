@@ -38,7 +38,29 @@
     
     </div>
 
-    <?php
+    <script>
+        
+        var mostrarContrasena = document.getElementById("mostrarContrasena");
+        var mostrar = document.getElementById('contra_usu_login');
+    
+        mostrarContrasena.addEventListener('click', function(e){
+    
+            e.preventDefault();
+            if (mostrar.type == "password"){
+                mostrar.type = "text";
+                console.log("He cambiado a texto");
+                mostrarContrasena.src = '../img/view-passwd.png';
+            }
+            else{
+                mostrar.type = "password";
+                console.log("He cambiado a password");
+                mostrarContrasena.src = '../img/invisible-passwd.png';
+            }
+        });
+    
+      </script>
+ 
+ <?php
 
         include "../biblioteca/funcionesZamoen.php";
 
@@ -47,7 +69,7 @@
         if (!empty( $_POST['dni']) && !empty($_POST['contra_usu_login'])){
             
             $dni = $_POST['dni'];
-            $contra = $_POST['contra_usu_login'];
+            $contra = md5($_POST['contra_usu_login']);
 
             
             $sql = "SELECT * FROM lista_usuario WHERE contrasena = '$contra' AND dni = '$dni'";
@@ -71,25 +93,6 @@
         }
     ?>
 
-    <script>
-        
-        var mostrarContrasena = document.getElementById("mostrarContrasena");
-        var mostrar = document.getElementById("contra_usu_login");
-
-        mostrarContrasena.addEventListener('click', function(e){
-
-            e.preventDefault();
-            if (mostrar.type == "password"){
-                mostrar.type = "text";
-                mostrarContrasena.src = '../img/view-passwd.png';
-            }
-            else{
-                mostrar.type = "password";
-                mostrarContrasena.src = '../img/invisible-passwd.png';
-            }
-        });
-
-      </script>
 
    <?php
    /*
