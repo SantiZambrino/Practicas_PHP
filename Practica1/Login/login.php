@@ -62,12 +62,14 @@
  
  <?php
 
-        include "../biblioteca/funcionesZamoen.php";
+include "../biblioteca/funcionesZamoen.php";
 
-        $conn = Conexion();
-        
-        if (!empty( $_POST['dni']) && !empty($_POST['contra_usu_login'])){
-            
+$conn = Conexion();
+
+if (!empty( $_POST['dni']) && !empty($_POST['contra_usu_login'])){
+    
+            session_start();
+    
             $dni = $_POST['dni'];
             $contra = md5($_POST['contra_usu_login']);
 
@@ -76,14 +78,25 @@
 
             $result = mysqli_query ($conn, $sql);   
 
+            
             if (!$result){
                 exit;
             }
             else{
                 
-                if(mysqli_fetch_assoc($result) > 0){
+                if($valores = mysqli_fetch_array($result)){
+                    
+                    $_SESSION['id_admin'] = $valores['id_admin'];
 
-                    header('Location: ../Vehiculos/vehiculo.php?dni='.$dni );
+                    if($valores['id_admin'] == 1){
+
+                        header('Location: https://wwww.google.es');
+                    }
+                    else{
+
+                        header('Location: ../Vehiculos/vehiculo.php?dni='.$dni );
+                    }
+
                 }
                 else{
 
