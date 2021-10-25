@@ -68,8 +68,16 @@ include "../biblioteca/funcionesZamoen.php";
         //Creo variable donde se guardara la fecha
         //https://www.youtube.com/watch?v=fA1eo4Mdwjs
         $date = new DateTime();
-        $galletita = setcookie("fecha", ".$date.", time(), 84600);
-        echo $galletita;
+        setcookie("galletita", ".$date.", time(), 84600);
+
+        //Isset determina si una variable esta definida
+        if (isset($_COOKIE["galletita"])) {
+            //$_COOKIE es una variable global
+                echo $_COOKIE;
+        }else{
+            echo "No se ha creado la cookie";
+        }
+       
         
         if (!empty( $_POST['dni']) && !empty($_POST['contra_usu_login'])){
             
