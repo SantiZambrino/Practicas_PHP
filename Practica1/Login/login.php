@@ -14,8 +14,8 @@
     <div class="outer-container">
 
         <header id="cabecera">
-                <a href="#">
-                <img id="logo-taller" src="../img/Logo-Coche.png" alt="Logo Talleres Zamoen">
+            <a href="#">
+            <img id="logo-taller" src="../img/Logo-Coche.png" alt="Logo Talleres Zamoen">
             </a>
         </header>
 
@@ -65,19 +65,6 @@
 include "../biblioteca/funcionesZamoen.php";
 
         $conn = Conexion();
-        //Creo variable donde se guardara la fecha
-        //https://www.youtube.com/watch?v=fA1eo4Mdwjs
-        $date = new DateTime();
-        setcookie("galletita", ".$date.", time(), 84600);
-
-        //Isset determina si una variable esta definida
-        if (isset($_COOKIE["galletita"])) {
-            //$_COOKIE es una variable global
-                echo $_COOKIE;
-        }else{
-            echo "No se ha creado la cookie";
-        }
-       
         
         if (!empty( $_POST['dni']) && !empty($_POST['contra_usu_login'])){
             
@@ -96,11 +83,13 @@ include "../biblioteca/funcionesZamoen.php";
             else{
                 
                 if($valores = mysqli_fetch_array($result)){
-
+                    include "../Login/cookie.php";
                     $_SESSION['id_admin'] = $valores['id_admin'];
                     
                     $_SESSION['dni'] = $valores['dni'];
-
+                    //creamos la cookie con el dni del usuario/administrador concatenando la palabra cookie. 
+                    crearCookie('dni'.'Cookie');
+                    
                     if($valores['id_admin'] == 1){
 
                         header('Location: lista_Admin.php');
