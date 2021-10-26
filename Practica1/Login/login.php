@@ -65,6 +65,7 @@
 include "../biblioteca/funcionesZamoen.php";
 
         $conn = Conexion();
+
         //Creo variable donde se guardara la fecha
         //https://www.youtube.com/watch?v=fA1eo4Mdwjs
         $date = new DateTime();
@@ -80,6 +81,8 @@ include "../biblioteca/funcionesZamoen.php";
        
         
         if (!empty( $_POST['dni']) && !empty($_POST['contra_usu_login'])){
+
+            session_start();
             
             $dni = $_POST['dni'];
             $contra = md5($_POST['contra_usu_login']);
@@ -96,6 +99,8 @@ include "../biblioteca/funcionesZamoen.php";
             else{
                 
                 if($valores = mysqli_fetch_array($result)){
+
+                    
 
                     $_SESSION['id_admin'] = $valores['id_admin'];
                     
