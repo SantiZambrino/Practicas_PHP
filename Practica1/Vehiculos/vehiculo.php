@@ -17,9 +17,14 @@
     <div class="outer-container">
 
         <header id="cabecera">
+            <div class="vacio">
+            </div>
             <a href="#">
                 <img id="logo-taller" src="../img/Logo-Coche.png" alt="Logo Talleres Zamoen">
             </a>
+            <div class="info-usu">
+                <h3>Usuario: Juanfran</h3>
+            </div>
         </header>
 
     <?php
