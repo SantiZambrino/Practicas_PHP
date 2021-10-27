@@ -1,5 +1,4 @@
 <?php 
-
     function crearCookie($nombreCookie){
         //Creo el nombre de la cookie
         $nombre = $nombreCookie;
@@ -10,11 +9,10 @@
         // El tiempo de expiración es en 1 dia. PHP traduce la fecha al formato adecuado
         $expiracion = time() + 84600*15;
         setcookie($nombre, $valor, $expiracion);
-        //Isset determina si una variable está definida y no es null
-        if(isset($_COOKIE[$nombre])){
-            echo "Ultima conexion relizada el: ".$_COOKIE[$nombre];
-        } else{
-            echo "La cookie no esta definida";
-        }
+        echo "Ultima conexion relizada el: ".$_COOKIE[$nombre];
     }
+
+    // function getCookie(){
+    //     return "Ultima conexion relizada el: ". $_COOKIE[$nombre];
+    // }
 ?>
