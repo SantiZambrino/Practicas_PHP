@@ -1,7 +1,7 @@
 <?php
     function Conexion(){
 
-        $db_host = "localhos";
+        $db_host = "localhost";
         $db_name = "bd_taller";
         $db_user = "root";
         $db_pass = "2DAW2021...";
