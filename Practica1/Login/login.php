@@ -65,8 +65,9 @@
 include "../biblioteca/funcionesZamoen.php";
 
         $conn = Conexion();
-        
         if (!empty( $_POST['dni']) && !empty($_POST['contra_usu_login'])){
+
+            session_start();
             
             $dni = $_POST['dni'];
             $contra = md5($_POST['contra_usu_login']);
@@ -88,8 +89,8 @@ include "../biblioteca/funcionesZamoen.php";
                     
                     $_SESSION['dni'] = $valores['dni'];
                     //creamos la cookie con el dni del usuario/administrador concatenando la palabra cookie. 
+                    // getNombre($_SESSION['dni'].'Cookie');
                     crearCookie($_SESSION['dni'].'Cookie');
-                    print_r($_COOKIE);
                     
                     if($valores['id_admin'] == 1){
 
