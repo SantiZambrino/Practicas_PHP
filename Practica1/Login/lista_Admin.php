@@ -11,22 +11,48 @@
     <title>Listado Usuarios | Talleres Zamoen</title>
 </head>
 <body>
-    
+    <?php
+
+    include "../biblioteca/funcionesZamoen.php";
+
+    $conn = Conexion();
+
+    session_start();
+
+    $dni = $_SESSION['dni'];
+
+    $sqlName = "SELECT nombre FROM lista_usuario WHERE dni = '$dni'";
+
+    $resultName = mysqli_query($conn, $sqlName);
+                    
+    if ($resultName === false) {
+            echo mysqli_error($conn);
+    } 
+    else {
+
+        $info = mysqli_fetch_array($resultName);
+
+        $name = $info['nombre'];
+
+    }
+
+        ?>
     <div class="outer-container">
 
         <header id="cabecera">
+            <div class="vacio">
+            </div>
             <a href="#">
                 <img id="logo-taller" src="../img/Logo-Coche.png" alt="Logo Talleres Zamoen">
             </a>
-          
+            <div class="info-usu">
+                <h3><?php echo ucfirst($name); ?></h3>
+                <a id="btn-logOut" href="../Login/logOut.php">Cerrar Sesión</a>
+            </div>
         </header>
+        <?php
 
-    <?php
-
-        include "../biblioteca/funcionesZamoen.php";
-
-        $conn = Conexion();
-
+      
         $sqlFirst =  "SELECT nombre, apellidos, dni, telefono, email
                             FROM lista_usuario";
 
