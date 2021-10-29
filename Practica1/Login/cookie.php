@@ -12,7 +12,7 @@
         $expiracion = time() + 84600*15;
         setcookie($GLOBALS["nombre"], $valor, $expiracion, "/");
         // echo "Ultima conexion relizada el: ".$_COOKIE[$nombre];
-        return $valor;
+        // return $valor;
     }
 
         function getCookie(){
