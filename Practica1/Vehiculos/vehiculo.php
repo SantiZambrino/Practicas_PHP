@@ -58,10 +58,11 @@
         </header>
     <?php
 
+        $dniUsu = $_GET['dni'] ;
 
         $sqlFirst =  "SELECT nombre, apellidos, dni, telefono, email
                             FROM lista_usuario
-                            WHERE dni = '$dni'";
+                            WHERE dni = '$dniUsu'";
 
         $info = mysqli_query($conn, $sqlFirst);
                     
@@ -89,7 +90,7 @@
                         ?>
                         <td><?php echo $valor['nombre'] ; ?></td>
                         <td><?php echo $valor['apellidos'] ; ?></td>
-                        <td><?php echo  $_GET['dni'] ; ?></td>
+                        <td><?php echo $dniUsu; ?></td>
                         <td><?php echo $valor['telefono'] ; ?></td>
                         <td><?php echo $valor['email'] ; ?></td>
                         <?php
@@ -106,7 +107,7 @@
                         FROM lista_vehiculos
                         WHERE id_usuario = (SELECT id_usuario
                                             FROM lista_usuario 
-                                            WHERE dni = '$dni')";
+                                            WHERE dni = '$dniUsu')";
                                 
 
             $results = mysqli_query($conn, $sql);
