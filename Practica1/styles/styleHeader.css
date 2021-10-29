@@ -33,3 +33,12 @@ body{
 #logo-taller{
     width: 10rem;
 }
+
+.vacio, .info-usu{
+    flex-basis: 33%;
+}
+
+.info-usu{
+    display: flex;
+    justify-content: flex-end;
+}

@@ -65,7 +65,6 @@
 include "../biblioteca/funcionesZamoen.php";
 
         $conn = Conexion();
-       
         
         if (!empty( $_POST['dni']) && !empty($_POST['contra_usu_login'])){
 
