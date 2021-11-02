@@ -10,13 +10,51 @@
     <title>Registro Servicio| Talleres Zamoen</title>
 </head>
 <body>
+    <?php
 
+        include "../biblioteca/funcionesZamoen.php";
+
+        $conn = Conexion();
+
+        session_start();
+
+        $dni = $_SESSION['dni'];
+
+        $sqlName = "SELECT nombre FROM lista_usuario WHERE dni = '$dni'";
+
+        $resultName = mysqli_query($conn, $sqlName);
+                        
+        if ($resultName === false) {
+                echo mysqli_error($conn);
+        } 
+        else {
+
+            $info = mysqli_fetch_array($resultName);
+
+            $name = $info['nombre'];
+
+        }
+
+            ?>
     <div class="outer-container">
 
         <header id="cabecera">
-            <a href="../Vehiculos/vehiculo.php?dni=<?php echo $_GET['dni']; ?>">
+            <div class="vacio">
+            </div>
+            <a href="#">
                 <img id="logo-taller" src="../img/Logo-Coche.png" alt="Logo Talleres Zamoen">
             </a>
+            <div class="info-usu">
+                <h3><?php echo ucfirst($name); ?></h3>
+                <?php
+                        if($_SESSION['id_admin'] == 1){
+                            ?>
+                                <a id="btn-Panel" href="../Login/lista_Admin.php">Volver al Panel</a>
+                            <?php
+                        }
+                ?>
+                <a id="btn-logOut" href="../Login/logOut.php">Cerrar Sesión</a>
+            </div>
         </header>
 
         <div class="container-login-servicio">
@@ -42,9 +80,7 @@
 
     <?php
 
-        include "../biblioteca/funcionesZamoen.php";
-
-        $conn = Conexion();
+        
 
         $dni = $_GET['dni'];
         $matricula = $_GET['matricula'];
