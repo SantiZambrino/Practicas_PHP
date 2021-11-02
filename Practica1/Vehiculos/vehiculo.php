@@ -13,13 +13,15 @@
 </head>
 
 <body>
-<?php
-
+    <?php 
+    //Inicio la sesion para poder obtener los valores como el dni
+    session_start();
+    include "../Login/cookie.php";
     include "../biblioteca/funcionesZamoen.php";
 
     $conn = Conexion();
 
-    session_start();
+    
 
     $dni = $_SESSION['dni'];
 
@@ -38,11 +40,13 @@
 
     }
 
-        ?>
+    ?>
     <div class="outer-container">
 
         <header id="cabecera">
             <div class="vacio">
+            <!-- Muestro la cookie buscando su nombre que es la suma de el valor de la variable SESSION['dni'] + la palabra cookie. -->
+                <p><?php echo 'Ultima conexion realizada el: '.$_COOKIE[$_SESSION['dni'].'Cookie']; ?></p>
             </div>
             <a href="#">
                 <img id="logo-taller" src="../img/Logo-Coche.png" alt="Logo Talleres Zamoen">

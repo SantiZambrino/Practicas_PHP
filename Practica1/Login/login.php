@@ -14,8 +14,8 @@
     <div class="outer-container">
 
         <header id="cabecera">
-                <a href="#">
-                <img id="logo-taller" src="../img/Logo-Coche.png" alt="Logo Talleres Zamoen">
+            <a href="#">
+            <img id="logo-taller" src="../img/Logo-Coche.png" alt="Logo Talleres Zamoen">
             </a>
         </header>
 
@@ -85,13 +85,14 @@ include "../biblioteca/funcionesZamoen.php";
             else{
                 
                 if($valores = mysqli_fetch_array($result)){
-
-                    
-
+                    include "../Login/cookie.php";
                     $_SESSION['id_admin'] = $valores['id_admin'];
                     
                     $_SESSION['dni'] = $valores['dni'];
-
+                    //creamos la cookie con el dni del usuario/administrador concatenando la palabra cookie. 
+                    // getNombre($_SESSION['dni'].'Cookie');
+                    crearCookie($_SESSION['dni'].'Cookie');
+                    
                     if($valores['id_admin'] == 1){
 
                         header('Location: lista_Admin.php');
