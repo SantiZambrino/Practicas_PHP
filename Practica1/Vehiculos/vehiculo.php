@@ -51,6 +51,13 @@
             </a>
             <div class="info-usu">
                 <h3><?php echo ucfirst($name); ?></h3>
+                <?php
+                        if($_SESSION['id_admin'] == 1){
+                            ?>
+                                <a id="btn-Panel" href="../Login/lista_Admin.php">Volver al Panel</a>
+                            <?php
+                        }
+                ?>
                 <a id="btn-logOut" href="../Login/logOut.php">Cerrar Sesión</a>
             </div>
         </header>
