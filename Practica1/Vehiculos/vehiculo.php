@@ -21,7 +21,7 @@
 
     $conn = Conexion();
 
-    // session_start();
+    
 
     $dni = $_SESSION['dni'];
 

@@ -12,10 +12,18 @@
     <title>Listado Servicios | Talleres Zamoen</title>
 </head>
 <body>
+    <?php
+    session_start();
+    include "../Login/cookie.php";
+    ?>
     <!-- Al darle click en la cabecera ira a la pagina vehiculos.php-->
     <div class="outer-container">
 
         <header id="cabecera">
+        <div class="vacio">
+            <!-- Muestro la cookie buscando su nombre que es la suma de el valor de la variable SESSION['dni'] + la palabra cookie. -->
+                <p><?php echo 'Ultima conexion realizada el: '.$_COOKIE[$_SESSION['dni'].'Cookie']; ?></p>
+        </div>    
         <a href="../Vehiculos/vehiculo.php?dni=<?php echo $_GET['dni']; ?>">
                 <img id="logo-taller" src="../img/Logo-Coche.png" alt="Logo Talleres Zamoen">
             </a>
