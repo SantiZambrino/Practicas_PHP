@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/styleHeader.css" />
+    <link rel="stylesheet" href="../styles/styleHeader.css"/>
    
     <link rel="stylesheet" href="../styles/styleLista_Admin.css">
     <link rel="shortcut icon" href="../img/favicon-logo.png" />
@@ -15,7 +15,7 @@
     session_start();
     include "../biblioteca/funcionesZamoen.php";
 
-            $conn = Conexion();
+    $conn = Conexion();
 
     $dni = $_SESSION['dni'];
 
@@ -26,7 +26,11 @@
 
             <header id="cabecera">
             <div class="vacio">
-            <p><?php echo 'Ultima conexion realizada el: ' . $_COOKIE[$_SESSION['dni'] .'Cookie']; ?></p>
+            </div>
+            <div class="logo">  
+                <a href="#">
+                    <img id="logo-taller" src="../img/Logo-Coche.png" alt="Logo Talleres Zamoen">
+                </a>
             </div>
             <div class="container-info-header">
                 <div class="info-usu">
