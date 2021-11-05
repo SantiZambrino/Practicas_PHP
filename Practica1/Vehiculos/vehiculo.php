@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <?php 
+    <?php
     //Inicio la sesion para poder obtener los valores como el dni
     session_start();
     include "../Login/cookie.php";
@@ -21,24 +21,22 @@
 
     $conn = Conexion();
 
-    
-
     $dni = $_SESSION['dni'];
 
-    $sqlName = "SELECT nombre FROM lista_usuario WHERE dni = '$dni'";
+    // TODO: usar el codigo con la funcion datos nombre
+    $name = datosNombre($conn, $dni);
+    // $sqlName = "SELECT nombre FROM lista_usuario WHERE dni = '$dni'";
 
-    $resultName = mysqli_query($conn, $sqlName);
-                    
-    if ($resultName === false) {
-            echo mysqli_error($conn);
-    } 
-    else {
+    // $resultName = mysqli_query($conn, $sqlName);
 
-        $info = mysqli_fetch_array($resultName);
+    // if ($resultName === false) {
+    //     echo mysqli_error($conn);
+    // } else {
 
-        $name = $info['nombre'];
+    //     $info = mysqli_fetch_array($resultName);
 
-    }
+    //     $name = $info['nombre'];
+    // }
 
     ?>
     <div class="outer-container">
@@ -69,25 +67,24 @@
             </div>
             </div>
         </header>
-    <?php
+        <?php
 
-        $dniUsu = $_GET['dni'] ;
+        $dniUsu = $_GET['dni'];
 
         $sqlFirst =  "SELECT nombre, apellidos, dni, telefono, email
                             FROM lista_usuario
                             WHERE dni = '$dniUsu'";
 
         $info = mysqli_query($conn, $sqlFirst);
-                    
-        if ($info === false) {
-                echo mysqli_error($conn);
-        } 
-        else {
 
-             ?>
+        if ($info === false) {
+            echo mysqli_error($conn);
+        } else {
+
+        ?>
             <div class="container-form">
                 <table name="infoUsuarios" id="infoUsuarios">
-                        
+
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>DNI</th>
@@ -96,24 +93,24 @@
 
                     <tr>
 
-                    <?php
+                        <?php
 
-                    foreach ($info as $valor) {
+                        foreach ($info as $valor) {
 
                         ?>
-                        <td><?php echo $valor['nombre'] ; ?></td>
-                        <td><?php echo $valor['apellidos'] ; ?></td>
-                        <td><?php echo $dniUsu; ?></td>
-                        <td><?php echo $valor['telefono'] ; ?></td>
-                        <td><?php echo $valor['email'] ; ?></td>
+                            <td><?php echo $valor['nombre']; ?></td>
+                            <td><?php echo $valor['apellidos']; ?></td>
+                            <td><?php echo $dniUsu; ?></td>
+                            <td><?php echo $valor['telefono']; ?></td>
+                            <td><?php echo $valor['email']; ?></td>
                         <?php
-                    }
+                        }
 
-                    ?>
+                        ?>
                     </tr>
                 </table>
             </div>
-    
+
             <?php
 
             $sql =  "SELECT matricula, marca, modelo, año
@@ -121,61 +118,61 @@
                         WHERE id_usuario = (SELECT id_usuario
                                             FROM lista_usuario 
                                             WHERE dni = '$dniUsu')";
-                                
+
 
             $results = mysqli_query($conn, $sql);
 
             if ($results === false) {
                 echo mysqli_error($conn);
-            } 
-            else {
+            } else {
 
-                ?>
+            ?>
                 <div class="container-view">
 
                     <table name="datosUsuarios" id="datosUsuarios">
-                                    
+
                         <th>Matrícula</th>
                         <th>Marca</th>
                         <th>Modelo</th>
                         <th>Año</th>
-    
-                        <?php
-                                    
-                        foreach ($results as $valor) {
-                                        
-                            ?>
-                            <tr>
-                            <?php
-                            foreach ($valor as $k) {
-                                                
-                                ?>
-                                <td><a href="../Sevicios/Servicios.php?dni=<?php echo $_GET['dni'];?>&matricula=<?php echo ($valor["matricula"]);?>"><?php  echo $k ; ?></a></td>
-                                <?php
-                            }
 
-                            ?>
+                        <?php
+
+                        foreach ($results as $valor) {
+
+                        ?>
+                            <tr>
+                                <?php
+                                foreach ($valor as $k) {
+
+                                ?>
+                                    <td><a href="../Sevicios/Servicios.php?dni=<?php echo $_GET['dni']; ?>&matricula=<?php echo ($valor["matricula"]); ?>"><?php echo $k; ?></a></td>
+                                <?php
+                                }
+
+                                ?>
                             </tr>
                         <?php
                         }
 
-                    ?>
+                        ?>
                     </table>
-                                <div class="newvh">
-                                    <a href="../Vehiculos/newVehiculo.php?dni=<?php echo $_GET['dni'];?>" class="btn newvh">Nuevo Vehiculo</a>    
-                                </div>       
-                                <?php
+                    <div class="newvh">
+                        <a href="../Vehiculos/newVehiculo.php?dni=<?php echo $_GET['dni']; ?>" class="btn newvh">Nuevo Vehiculo</a>
+                    </div>
+            <?php
 
             }
-         }
+        }
 
-    mysqli_close($conn);
-            
-    ?>
+        mysqli_close($conn);
 
-                    </div>
-        
+            ?>
+
+                </div>
+
     </div>
 
 </body>
+
 </html>

@@ -87,7 +87,6 @@ include "../biblioteca/funcionesZamoen.php";
                 if($valores = mysqli_fetch_array($result)){
                     include "../Login/cookie.php";
                     $_SESSION['id_admin'] = $valores['id_admin'];
-                    
                     $_SESSION['dni'] = $valores['dni'];
                     //creamos la cookie con el dni del usuario/administrador concatenando la palabra cookie. 
                     // getNombre($_SESSION['dni'].'Cookie');

@@ -19,4 +19,21 @@
         
         return $conn;
     }    
+
+    function datosNombre($conn, $dni){
+    
+        $sqlName = "SELECT nombre FROM lista_usuario WHERE dni = '$dni'";
+
+        $resultName = mysqli_query($conn, $sqlName);
+    
+        if ($resultName === false) {
+            echo mysqli_error($conn);
+        } else {
+    
+            $info = mysqli_fetch_array($resultName);
+            $name = $info['nombre'];
+            return $name;   
+        }
+    
+    }
 ?>
