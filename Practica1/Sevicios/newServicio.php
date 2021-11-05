@@ -38,22 +38,30 @@
             ?>
     <div class="outer-container">
 
-        <header id="cabecera">
-            <div class="vacio">
-            </div>
-            <a href="#">
+    <header id="cabecera">
+        <div class="vacio">
+         
+        </div>  
+        <div class="logo">  
+            <a href="../Vehiculos/vehiculo.php?dni=<?php echo $_GET['dni']; ?>">
                 <img id="logo-taller" src="../img/Logo-Coche.png" alt="Logo Talleres Zamoen">
             </a>
+        </div>
+        <div class="container-info-header">
             <div class="info-usu">
                 <h3><?php echo ucfirst($name); ?></h3>
-                <?php
-                        if($_SESSION['id_admin'] == 1){
-                            ?>
-                                <a id="btn-Panel" href="../Login/lista_Admin.php">Volver al Panel</a>
-                            <?php
-                        }
-                ?>
-                <a id="btn-logOut" href="../Login/logOut.php">Cerrar Sesión</a>
+                    <?php
+                    if($_SESSION['id_admin'] == 1){
+                        ?>
+                        <a id="btn-Panel" href="../Login/lista_Admin.php">Volver al Panel</a>
+                        <?php
+                    }
+                    ?>
+                    <a id="btn-logOut" href="../Login/logOut.php">Cerrar Sesión</a>
+            </div>
+            <div class="cookies">
+                <p><?php echo 'Ultima conexion realizada el: '.$_COOKIE[$_SESSION['dni'].'Cookie']; ?></p>
+            </div>
             </div>
         </header>
 
