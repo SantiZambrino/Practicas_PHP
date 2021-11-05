@@ -45,6 +45,7 @@
                 <div class="box-btn">
                 <button  class="btn registrar" value="enviar" onclick="reenviar()">Registrar</button>
                 <button  class="btn reset" type="reset" value="reset">Borrar</button>
+                <a id="comeBack" href="./login.php">Volver Atrás</a>
                 </div>
           
             </form>
