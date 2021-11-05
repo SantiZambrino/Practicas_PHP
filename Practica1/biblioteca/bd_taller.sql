@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-10-2021 a las 12:10:18
+-- Tiempo de generación: 05-11-2021 a las 13:15:06
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.10
 
@@ -42,7 +42,8 @@ INSERT INTO `lista_servicios` (`id_servicio`, `tipo_servicio`, `descripcion`, `i
 (14, 'Cambio de Ruedas', 'Se le han cambiado las ruedas.', 31),
 (17, 'Frenos Liquido', 'funciona', 2),
 (18, 'cambio de discos de frenado', 'sustitucion de discos de freno', 3),
-(19, 'Cambio Energia', 'Se le han cambiado los paneles solares.', 32);
+(19, 'Cambio Energia', 'Se le han cambiado los paneles solares.', 32),
+(23, 'Cambio de filtros', 'sustitución de filtros del vehículo.', 32);
 
 -- --------------------------------------------------------
 
@@ -56,18 +57,20 @@ CREATE TABLE `lista_usuario` (
   `apellidos` varchar(30) NOT NULL,
   `dni` varchar(9) NOT NULL,
   `telefono` int(9) NOT NULL,
-  `email` varchar(40) NOT NULL
+  `email` varchar(40) NOT NULL,
+  `contrasena` varchar(50) DEFAULT NULL,
+  `id_admin` int(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `lista_usuario`
 --
 
-INSERT INTO `lista_usuario` (`id_usuario`, `nombre`, `apellidos`, `dni`, `telefono`, `email`) VALUES
-(1, 'juan', 'navarro', '12345678a', 123456789, 'juan@gmail.com'),
-(2, 'santi', 'zambrino', '87654321a', 987654321, 'santi@gmail.com'),
-(16, 'juanfran', 'montero', '12345678j', 695945152, 'juanfran@gmail.com'),
-(19, 'Prueba', 'Prueba Prueba', '99999999p', 695945152, 'prueba@prueba.com');
+INSERT INTO `lista_usuario` (`id_usuario`, `nombre`, `apellidos`, `dni`, `telefono`, `email`, `contrasena`, `id_admin`) VALUES
+(1, 'juan', 'navarro', '12345678a', 123456789, 'juan@gmail.com', 'a94652aa97c7211ba8954dd15a3cf838', 1),
+(2, 'santi', 'zambrino', '12345678s', 987654321, 'santi@gmail.com', 'ae1d4b431ead52e5ee1788010e8ec110', 1),
+(16, 'juanfran', 'montero', '12345678j', 695945152, 'juanfran@gmail.com', '9c2f8920e876deb1ffe2555bce37efc8', 2),
+(34, 'Prueba', 'Prueba Prueba', '12345678p', 12345678, 'prueba@prueba.com', 'c893bad68927b457dbed39460e6afd62', NULL);
 
 -- --------------------------------------------------------
 
@@ -93,7 +96,8 @@ INSERT INTO `lista_vehiculos` (`id_matricula`, `matricula`, `marca`, `modelo`, `
 (2, '3456fwd', 'Renault', 'Clio', '2014-10-14', 2),
 (3, '1234asd', 'Ford', 'Mondeo', '2012-10-02', 1),
 (31, '9999ppp', 'BMW', 'Serie 3', '2021-10-04', 16),
-(32, '2222ppp', 'Tesla', 'Models X', '2021-10-04', 16);
+(32, '2222ppp', 'Tesla', 'Models X', '2021-10-04', 16),
+(41, '1234DLR', 'Renault', 'Twingo', '1999-02-10', 16);
 
 --
 -- Índices para tablas volcadas
@@ -127,19 +131,19 @@ ALTER TABLE `lista_vehiculos`
 -- AUTO_INCREMENT de la tabla `lista_servicios`
 --
 ALTER TABLE `lista_servicios`
-  MODIFY `id_servicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_servicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `lista_usuario`
 --
 ALTER TABLE `lista_usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de la tabla `lista_vehiculos`
 --
 ALTER TABLE `lista_vehiculos`
-  MODIFY `id_matricula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_matricula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- Restricciones para tablas volcadas
