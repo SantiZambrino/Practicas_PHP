@@ -12,35 +12,21 @@
 </head>
 <body>
     <?php
-
+    session_start();
     include "../biblioteca/funcionesZamoen.php";
 
     $conn = Conexion();
 
-    session_start();
-
     $dni = $_SESSION['dni'];
 
-    $sqlName = "SELECT nombre FROM lista_usuario WHERE dni = '$dni'";
+    $name = datosNombre($conn, $dni);
 
-    $resultName = mysqli_query($conn, $sqlName);
-                    
-    if ($resultName === false) {
-            echo mysqli_error($conn);
-    } 
-    else {
-
-        $info = mysqli_fetch_array($resultName);
-
-        $name = $info['nombre'];
-
-    }
-
-        ?>
+    ?>
     <div class="outer-container">
 
         <header id="cabecera">
             <div class="vacio">
+            <p><?php echo 'Ultima conexion realizada el: ' . $_COOKIE[$_SESSION['dni'] .'Cookie']; ?></p>
             </div>
             <a href="#">
                 <img id="logo-taller" src="../img/Logo-Coche.png" alt="Logo Talleres Zamoen">
