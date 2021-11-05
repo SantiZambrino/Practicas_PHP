@@ -51,4 +51,49 @@
         // return $valor;
     }
 
+    function crearServicio($tipoServicio, $descripcionServicio,$conn, $dni, $id_matricula){
+        $sql =  "INSERT INTO lista_servicios (tipo_servicio, descripcion, id_matricula) VALUES ('" . $tipoServicio . "','" . $descripcionServicio . "',$id_matricula)";
+
+        $results = mysqli_query($conn, $sql);
+
+        if ($results == false) {
+
+            echo mysqli_error($conn);
+        } else {
+
+            header('Location: ../Vehiculos/vehiculo.php?dni=' . $dni);
+        }
+    }
+
+    function camposCompletados($matricula, $tipoServicio, $descripcionServicio){
+        if (!empty($matricula) && !empty($tipoServicio) && !empty($descripcionServicio)) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    function crearUsuario($nombre, $apellidos, $dni, $telefono, $email, $contra, $conn){
+        $sql =  "INSERT INTO lista_usuario (nombre, apellidos, dni, telefono, email, contrasena) VALUES ('$nombre', '$apellidos', '$dni', '$telefono', '$email', '$contra')";
+                
+        $results = mysqli_query($conn, $sql);
+    
+        if ($results === false) {
+        echo mysqli_error($conn);
+        }
+        else{
+
+            header('Location: ../Vehiculos/vehiculo.php?dni='.$dni );
+        }
+    }
+
+    function noExisteUsuario($nombre, $apellidos, $dni ,$telefono, $email, $contra){
+        if (!empty($nombre) && !empty($apellidos) && !empty($dni) && !empty($telefono) && !empty($email) &&  !empty($contra)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
 ?>

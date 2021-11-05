@@ -76,9 +76,6 @@
     </div>
 
     <?php
-
-
-
     $dni = $_GET['dni'];
     $matricula = $_GET['matricula'];
     $tipoServicio = $_POST['servicio'];
@@ -87,19 +84,8 @@
     $id_matricula = "(SELECT id_matricula FROM lista_vehiculos
                                     WHERE  matricula = '$matricula' )";
 
-    if (!empty($matricula) && !empty($tipoServicio) && !empty($descripcionServicio)) {
-
-        $sql =  "INSERT INTO lista_servicios (tipo_servicio, descripcion, id_matricula) VALUES ('" . $tipoServicio . "','" . $descripcionServicio . "',$id_matricula)";
-
-        $results = mysqli_query($conn, $sql);
-
-        if ($results == false) {
-
-            echo mysqli_error($conn);
-        } else {
-
-            header('Location: ../Vehiculos/vehiculo.php?dni=' . $dni);
-        }
+    if (camposCompletados($matricula, $tipoServicio, $descripcionServicio)) {
+        crearServicio($tipoServicio, $descripcionServicio, $conn, $dni,$id_matricula);
     }
 
     mysqli_close($conn);
