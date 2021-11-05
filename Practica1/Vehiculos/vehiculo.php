@@ -16,43 +16,41 @@
     <?php
     //Inicio la sesion para poder obtener los valores como el dni
     session_start();
-    include "../Login/cookie.php";
     include "../biblioteca/funcionesZamoen.php";
 
     $conn = Conexion();
 
     $dni = $_SESSION['dni'];
 
-    // TODO: usar el codigo con la funcion datos nombre
     $name = datosNombre($conn, $dni);
-    
+
     ?>
     <div class="outer-container">
 
-    <header id="cabecera">
-        <div class="vacio">
-         
-        </div>  
-        <div class="logo">  
-            <a href="../Vehiculos/vehiculo.php?dni=<?php echo $_GET['dni']; ?>">
-                <img id="logo-taller" src="../img/Logo-Coche.png" alt="Logo Talleres Zamoen">
-            </a>
-        </div>
-        <div class="container-info-header">
-            <div class="info-usu">
-                <h3><?php echo ucfirst($name); ?></h3>
+        <header id="cabecera">
+            <div class="vacio">
+
+            </div>
+            <div class="logo">
+                <a href="../Vehiculos/vehiculo.php?dni=<?php echo $_GET['dni']; ?>">
+                    <img id="logo-taller" src="../img/Logo-Coche.png" alt="Logo Talleres Zamoen">
+                </a>
+            </div>
+            <div class="container-info-header">
+                <div class="info-usu">
+                    <h3><?php echo ucfirst($name); ?></h3>
                     <?php
-                    if($_SESSION['id_admin'] == 1){
-                        ?>
+                    if ($_SESSION['id_admin'] == 1) {
+                    ?>
                         <a id="btn-Panel" href="../Login/lista_Admin.php">Volver al Panel</a>
-                        <?php
+                    <?php
                     }
                     ?>
                     <a id="btn-logOut" href="../Login/logOut.php">Cerrar Sesión</a>
-            </div>
-            <div class="cookies">
-                <p><?php echo 'Ultima conexion realizada el: '.$_COOKIE[$_SESSION['dni'].'Cookie']; ?></p>
-            </div>
+                </div>
+                <div class="cookies">
+                    <p><?php echo 'Ultima conexion realizada el: ' . $_COOKIE[$_SESSION['dni'] . 'Cookie']; ?></p>
+                </div>
             </div>
         </header>
         <?php

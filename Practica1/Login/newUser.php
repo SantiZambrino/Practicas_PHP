@@ -54,7 +54,7 @@
     </div>
 
     <?php
-
+        //TODO: (Santi) Pasar a funcion.
         include "../biblioteca/funcionesZamoen.php";
 
         $conn = Conexion();

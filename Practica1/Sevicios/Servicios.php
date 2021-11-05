@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,157 +11,143 @@
     <link rel="shortcut icon" href="../img/favicon-logo.png" />
     <title>Listado Servicios | Talleres Zamoen</title>
 </head>
+
 <body>
     <?php
     session_start();
-    include "../Login/cookie.php";
+    include "../biblioteca/funcionesZamoen.php";
 
-        include "../biblioteca/funcionesZamoen.php";
+    $conn = Conexion();
 
-        $conn = Conexion();
+    $dni = $_SESSION['dni'];
 
-        $dni = $_SESSION['dni'];
+    $name = datosNombre($conn, $dni);
 
-        $sqlName = "SELECT nombre FROM lista_usuario WHERE dni = '$dni'";
-
-        $resultName = mysqli_query($conn, $sqlName);
-                        
-        if ($resultName === false) {
-                echo mysqli_error($conn);
-        } 
-        else {
-
-            $info = mysqli_fetch_array($resultName);
-
-            $name = $info['nombre'];
-
-        }
-
-        ?>
+    ?>
     <div class="outer-container">
 
         <header id="cabecera">
-        <div class="vacio">
-         
-        </div>  
-        <div class="logo">  
-            <a href="../Vehiculos/vehiculo.php?dni=<?php echo $_GET['dni']; ?>">
-                <img id="logo-taller" src="../img/Logo-Coche.png" alt="Logo Talleres Zamoen">
-            </a>
-        </div>
-        <div class="container-info-header">
-            <div class="info-usu">
-                <h3><?php echo ucfirst($name); ?></h3>
+            <div class="vacio">
+
+            </div>
+            <div class="logo">
+                <a href="../Vehiculos/vehiculo.php?dni=<?php echo $_GET['dni']; ?>">
+                    <img id="logo-taller" src="../img/Logo-Coche.png" alt="Logo Talleres Zamoen">
+                </a>
+            </div>
+            <div class="container-info-header">
+                <div class="info-usu">
+                    <h3><?php echo ucfirst($name); ?></h3>
                     <?php
-                    if($_SESSION['id_admin'] == 1){
-                        ?>
+                    if ($_SESSION['id_admin'] == 1) {
+                    ?>
                         <a id="btn-Panel" href="../Login/lista_Admin.php">Volver al Panel</a>
-                        <?php
+                    <?php
                     }
                     ?>
                     <a id="btn-logOut" href="../Login/logOut.php">Cerrar Sesión</a>
-            </div>
-            <div class="cookies">
-                <p><?php echo 'Ultima conexion realizada el: '.$_COOKIE[$_SESSION['dni'].'Cookie']; ?></p>
-            </div>
+                </div>
+                <div class="cookies">
+                    <p><?php echo 'Ultima conexion realizada el: ' . $_COOKIE[$_SESSION['dni'] . 'Cookie']; ?></p>
+                </div>
             </div>
         </header>
 
-    <!-- incluimos la carpeta con la funcion para conectar a la base de datos -->
+        <!-- incluimos la carpeta con la funcion para conectar a la base de datos -->
         <?php
-     
-    //Guardamos en variables los argumentos que cogimos de la pagina vehiculos para luego utilizarlos en consultas
+
+        //Guardamos en variables los argumentos que cogimos de la pagina vehiculos para luego utilizarlos en consultas
         $dni = $_GET['dni'];
         $matricula = $_GET['matricula'];
-    //Realizamos la consulta que nos devuelve los datos del vehiculo seleccionado anteriormente
+        //Realizamos la consulta que nos devuelve los datos del vehiculo seleccionado anteriormente
         $sql =  "SELECT matricula, marca, modelo, año
         FROM lista_vehiculos
         WHERE matricula = '$matricula'";
-    //Consulta que devuelve el servicio y su descripcion
+        //Consulta que devuelve el servicio y su descripcion
         $sql2 =  "SELECT tipo_servicio, descripcion
         FROM lista_servicios
         WHERE id_matricula = (select id_matricula FROM lista_vehiculos
         WHERE matricula = '$matricula')";
 
-    
 
-    //Guardamos las consulatas y la conexion en dos variables       
+
+        //Guardamos las consulatas y la conexion en dos variables       
         $results = mysqli_query($conn, $sql);
         $results2 = mysqli_query($conn, $sql2);
-       
-    //Si hay algun error salta el error 
+
+        //Si hay algun error salta el error 
         if ($results === false) {
             echo mysqli_error($conn);
-        } 
-        else {
+        } else {
 
-            if(!empty($matricula)){
+            if (!empty($matricula)) {
 
-                ?>
+        ?>
                 <div class="container-view">
 
                     <table name="datosUsuario" id="datosUsuarios">
-                    
+
                         <th>Matrícula</th>
                         <th>Marca</th>
                         <th>Modelo</th>
                         <th>Año</th>
 
-                <?php
-                
-                foreach ($results as $valor) {
+                        <?php
+
+                        foreach ($results as $valor) {
 
                         ?>
-                        <tr>
-                            <?php
-                            foreach ($valor as $k) {
-                                ?>
-                            <td><?php echo $k; ?></td>
+                            <tr>
                                 <?php
-                            }
-                            ?>
-                        </tr>
-                        <?php
+                                foreach ($valor as $k) {
+                                ?>
+                                    <td><?php echo $k; ?></td>
+                                <?php
+                                }
+                                ?>
+                            </tr>
+                <?php
+                        }
+                    }
                 }
-            }
-        }
-                    ?>
-                    </table>
-
-<!-- Segunda consulta -->
-   
-                        <table name="datosServicios" id="datosServicios">
-                    
-                            <th>Tipo Servicio</th>
-                            <th>Descripcion</th>
-                        
-                            <?php
-                            
-                            foreach ($results2 as $valor) {
-                                
-                                ?>
-                                <tr>
-                                    <?php
-                                    foreach ($valor as $j) {
-                                        ?>
-                                    <td><?php echo $j; ?></td>
-                                        <?php
-                                    }
-                                    ?>
-                                </tr>
-                                <?php
-                            }
-
-                    mysqli_close($conn);
-
                 ?>
+                    </table>
+
+                    <!-- Segunda consulta -->
+
+                    <table name="datosServicios" id="datosServicios">
+
+                        <th>Tipo Servicio</th>
+                        <th>Descripcion</th>
+
+                        <?php
+
+                        foreach ($results2 as $valor) {
+
+                        ?>
+                            <tr>
+                                <?php
+                                foreach ($valor as $j) {
+                                ?>
+                                    <td><?php echo $j; ?></td>
+                                <?php
+                                }
+                                ?>
+                            </tr>
+                        <?php
+                        }
+
+                        mysqli_close($conn);
+
+                        ?>
 
                     </table>
-                        <div class="newvh">
-                            <a href="../Sevicios/newServicio.php?dni=<?php echo $_GET['dni']?>&matricula=<?php echo $_GET['matricula']?>"  class="btn newvh">Nuevo Servicio</a>    
-                        </div>
-        
+                    <div class="newvh">
+                        <a href="../Sevicios/newServicio.php?dni=<?php echo $_GET['dni'] ?>&matricula=<?php echo $_GET['matricula'] ?>" class="btn newvh">Nuevo Servicio</a>
+                    </div>
+
                 </div>
 
 </body>
+
 </html>
