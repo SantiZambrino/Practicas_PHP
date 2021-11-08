@@ -43,8 +43,9 @@
 
           
                 <div class="box-btn">
-                <button  class="btn registrar" value="enviar" onclick="reenviar()">Registrar</button>
+                <button  class="btn registrar" value="enviar">Registrar</button>
                 <button  class="btn reset" type="reset" value="reset">Borrar</button>
+                <a id="comeBack" href="./login.php">Volver Atrás</a>
                 </div>
           
             </form>
@@ -54,7 +55,7 @@
     </div>
 
     <?php
-
+        //TODO: (Santi) Pasar a funcion.
         include "../biblioteca/funcionesZamoen.php";
 
         $conn = Conexion();
@@ -65,19 +66,8 @@
         $email = $_POST['email_usu'];
         $contra = md5($_POST['contra_usu']);
 
-        if(!empty($nombre) && !empty($apellidos) && !empty($dni) && !empty($telefono) && !empty($email) &&  !empty($contra)){
-
-            $sql =  "INSERT INTO lista_usuario (nombre, apellidos, dni, telefono, email, contrasena) VALUES ('$nombre', '$apellidos', '$dni', '$telefono', '$email', '$contra')";
-                
-            $results = mysqli_query($conn, $sql);
-        
-            if ($results === false) {
-            echo mysqli_error($conn);
-            }
-            else{
-
-                header('Location: ../Vehiculos/vehiculo.php?dni='.$dni );
-            }
+        if(noExisteUsuario($nombre, $apellidos, $dni ,$telefono, $email, $contra)){
+            crearUsuario($nombre, $apellidos, $dni, $telefono, $email, $contra, $conn);
         }
 
         mysqli_close($conn);

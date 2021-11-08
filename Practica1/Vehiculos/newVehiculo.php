@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,8 +11,9 @@
     <link rel="shortcut icon" href="../img/favicon-logo.png" />
     <title>Registro Vehículo| Talleres Zamoen</title>
 </head>
+
 <body>
-<?php
+    <?php
 
     include "../biblioteca/funcionesZamoen.php";
 
@@ -21,72 +23,63 @@
 
     $dni = $_SESSION['dni'];
 
-    $sqlName = "SELECT nombre FROM lista_usuario WHERE dni = '$dni'";
+    $name = datosNombre($conn, $dni);
 
-    $resultName = mysqli_query($conn, $sqlName);
-                    
-    if ($resultName === false) {
-            echo mysqli_error($conn);
-    } 
-    else {
-
-        $info = mysqli_fetch_array($resultName);
-
-        $name = $info['nombre'];
-
-    }
+    $dniUsu = $_GET['dni'];
 
         ?>
     <div class="outer-container">
 
-    <header id="cabecera">
-        <div class="vacio">
-         
-        </div>  
-        <div class="logo">  
-            <a href="../Vehiculos/vehiculo.php?dni=<?php echo $_GET['dni']; ?>">
-                <img id="logo-taller" src="../img/Logo-Coche.png" alt="Logo Talleres Zamoen">
-            </a>
-        </div>
-        <div class="container-info-header">
-            <div class="info-usu">
-                <h3><?php echo ucfirst($name); ?></h3>
+        <header id="cabecera">
+            <div class="vacio">
+
+            </div>
+            <div class="logo">
+                <a href="../Vehiculos/vehiculo.php?dni=<?php echo $_GET['dni']; ?>">
+                    <img id="logo-taller" src="../img/Logo-Coche.png" alt="Logo Talleres Zamoen">
+                </a>
+            </div>
+            <div class="container-info-header">
+                <div class="info-usu">
+                    <h3><?php echo ucfirst($name); ?></h3>
                     <?php
-                    if($_SESSION['id_admin'] == 1){
-                        ?>
+                    if ($_SESSION['id_admin'] == 1) {
+                    ?>
                         <a id="btn-Panel" href="../Login/lista_Admin.php">Volver al Panel</a>
-                        <?php
+                    <?php
                     }
                     ?>
                     <a id="btn-logOut" href="../Login/logOut.php">Cerrar Sesión</a>
-            </div>
-            <div class="cookies">
-                <p><?php echo 'Ultima conexion realizada el: '.$_COOKIE[$_SESSION['dni'].'Cookie']; ?></p>
-            </div>
+                </div>
+                <div class="cookies">
+                    <p><?php echo 'Ultima conexion realizada el: ' . $_COOKIE[$_SESSION['dni'] . 'Cookie']; ?></p>
+                </div>
             </div>
         </header>
 
         <div class="container-login-vehiculo">
 
             <form id="form-new-vehiculo" name="form-new-vehiculo" method="post" action="#">
-        
+
                 <label for="matricula">Matricula</label>
-                <input name="matricula" id="matricula"  type="text" placeholder="Por favor, indique matricula" class="input-style" />
+                <input name="matricula" id="matricula" type="text" placeholder="Por favor, indique matricula" class="input-style" />
 
                 <label for="marca">Marca</label>
-                <input name="marca" id="marca" type="text" placeholder="Por favor, indique marca" class="input-style"/>
+                <input name="marca" id="marca" type="text" placeholder="Por favor, indique marca" class="input-style" />
 
                 <label for="modelo">Modelo</label>
-                <input name="modelo" id="modelo" type="text" placeholder="Por favor, indique modelo" class="input-style"/>
+                <input name="modelo" id="modelo" type="text" placeholder="Por favor, indique modelo" class="input-style" />
 
                 <label for="year">Año</label>
-                <input name="year" id="year" type="date" placeholder="Año fabricación"  class="input-style"/>
+                <input name="year" id="year" type="date" placeholder="Año fabricación" class="input-style" />
 
                 <div class="box-btn">
                 <button class="btn registrar" value="enviar">Registrar</button>
                 <button  class="btn reset" type="reset" value="reset">Borrar</button>
+                <a id="comeBack" href=" ../Vehiculos/vehiculo.php?dni=<?php echo $_GET['dni']; ?>">Volver Atrás</a>
+
                 </div>
-          
+
             </form>
 
         </div>
@@ -95,30 +88,31 @@
 
     <?php
 
-        $dni = $_GET['dni'];
+    $dni = $_GET['dni'];
 
-        $id_usuario = "(SELECT id_usuario FROM lista_usuario
-                                WHERE dni = '$dni ' )"; 
+    $id_usuario = "(SELECT id_usuario FROM lista_usuario
+                                WHERE dni = '$dni ' )";
 
-        $matricula = $_POST['matricula'];
-        $marca = $_POST['marca'];
-        $modelo = $_POST['modelo'];
-        $year = $_POST['year'];
+    $matricula = $_POST['matricula'];
+    $marca = $_POST['marca'];
+    $modelo = $_POST['modelo'];
+    $year = $_POST['year'];
 
-        if(!empty($matricula) && !empty($modelo) && !empty($year) ){
+    if (existeVehiculo()) {
 
-            $sql =  "INSERT INTO lista_vehiculos (matricula, marca, modelo, año, id_usuario) VALUES ( '$matricula', '$marca', '$modelo', '$year', $id_usuario)";
-     
-            $results = mysqli_query($conn, $sql);
-        
-            if ($results == false) {
+        $sql =  "INSERT INTO lista_vehiculos (matricula, marca, modelo, año, id_usuario) VALUES ( '$matricula', '$marca', '$modelo', '$year', $id_usuario)";
+
+        $results = mysqli_query($conn, $sql);
+
+        if ($results == false) {
 
             echo mysqli_error($conn);
-            } else{
-                header('Location: ../Vehiculos/vehiculo.php?dni='.$_GET['dni'] );
-            }
+        } else {
+            header('Location: ../Vehiculos/vehiculo.php?dni=' . $_GET['dni']);
         }
-        mysqli_close($conn);
-    ?>  
+    }
+    mysqli_close($conn);
+    ?>
 </body>
+
 </html>
