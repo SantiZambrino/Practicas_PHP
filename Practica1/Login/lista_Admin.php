@@ -13,9 +13,9 @@
 <body>
     <?php
     session_start();
-    include "../biblioteca/funcionesZamoen.php";
+    include "../biblioteca/funcionesZamoen.php";//incluimos la biblioteca con las conexiones
 
-    $conn = Conexion();
+    $conn = Conexion();//almacenamos la conexion
 
     $dni = $_SESSION['dni'];
 
