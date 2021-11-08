@@ -22,7 +22,7 @@
     $name = datosNombre($conn, $dni);
 
     ?>
-    <div class="outer-container">
+     <div class="outer-container"> <!-- codigo html con estructura de la pagina -->
 
             <header id="cabecera">
             <div class="vacio">
@@ -52,8 +52,8 @@
         <?php
 
       
-        $sqlFirst =  "SELECT nombre, apellidos, dni, telefono, email
-                            FROM lista_usuario";
+        $sqlFirst =  "SELECT nombre, apellidos, dni, telefono, email 
+                            FROM lista_usuario"; //consulta para extraer los datos de la base de datos y sacar el listado que visualizara un usuario con privilegio adminsitrador
 
         $results = mysqli_query($conn, $sqlFirst);
                     

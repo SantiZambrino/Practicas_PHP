@@ -14,11 +14,11 @@
 <body>
     <?php
 
-    include "../biblioteca/funcionesZamoen.php";
+    include "../biblioteca/funcionesZamoen.php"; // incluimos la biblioteca de funciones 
 
     $conn = Conexion();
 
-    session_start();
+    session_start(); // inicio sesion
 
     $dni = $_SESSION['dni'];
 
@@ -31,7 +31,7 @@
          $matricula = $_GET['matricula'];
 
             ?>
-    <div class="outer-container">
+    <div class="outer-container"> <!-- codigo de la pagina en html -->
 
         <header id="cabecera">
             <div class="vacio">
@@ -46,7 +46,7 @@
                 <div class="info-usu">
                     <h3><?php echo ucfirst($name); ?></h3>
                     <?php
-                    if ($_SESSION['id_admin'] == 1) {
+                    if ($_SESSION['id_admin'] == 1) { //condicion para cargar privilegios admin o usuario 
                     ?>
                         <a id="btn-Panel" href="../Login/lista_Admin.php">Volver al Panel</a>
                     <?php
@@ -60,7 +60,7 @@
             </div>
         </header>
 
-        <div class="container-login-servicio">
+        <div class="container-login-servicio"> <!-- codigo html para la estructura de nuestra pagina.  -->
 
             <form id="form-new-servicio" name="form-new-servicio" method="post">
 
@@ -91,7 +91,7 @@
     $id_matricula = "(SELECT id_matricula FROM lista_vehiculos
                                     WHERE  matricula = '$matricula' )";
 
-    if (camposCompletadosNuevoServicio($matricula, $tipoServicio, $descripcionServicio)) {
+    if (camposCompletadosNuevoServicio($matricula, $tipoServicio, $descripcionServicio)) { //funcion añadir nuevo servicio simplificado a traves de funciones.
         crearServicio($tipoServicio, $descripcionServicio, $conn, $dni,$id_matricula);
     }
 
