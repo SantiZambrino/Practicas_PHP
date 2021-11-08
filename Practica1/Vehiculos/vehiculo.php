@@ -45,7 +45,8 @@
 
                     // $id_admin = $_GET['id_admin'];
 
-                    if ($_SESSION['id_admin'] == 1 or $_GET['id_admin'] == 1) {
+                    if ($_SESSION['id_admin'] == 1) {
+             
                     ?>
                         <a id="btn-Panel" href="../Login/lista_Admin.php">Volver al Panel</a>
                     <?php
