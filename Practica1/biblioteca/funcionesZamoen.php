@@ -1,10 +1,10 @@
 <?php
     function Conexion(){
 
-        $db_host = "10.192.240.25:3307";
+        $db_host = "localhost";
         $db_name = "bd_taller";
-        $db_user = "cuentaSanti";
-        $db_pass = "1234";
+        $db_user = "root";
+        $db_pass = "2DAW2021...";
 
 
         try{
@@ -74,7 +74,13 @@
     }
 
     function crearUsuario($nombre, $apellidos, $dni, $telefono, $email, $contra, $conn){
-        $sql =  "INSERT INTO lista_usuario (nombre, apellidos, dni, telefono, email, contrasena) VALUES ('$nombre', '$apellidos', '$dni', '$telefono', '$email', '$contra')";
+
+        session_start();
+
+        $_SESSION['dni'] = $dni;
+        $id_admin = 2;
+
+        $sql =  "INSERT INTO lista_usuario (nombre, apellidos, dni, telefono, email, contrasena, id_admin) VALUES ('$nombre', '$apellidos', '$dni', '$telefono', '$email', '$contra', '$id_admin')";
                 
         $results = mysqli_query($conn, $sql);
     
@@ -83,7 +89,8 @@
         }
         else{
 
-            header('Location: ../Vehiculos/vehiculo.php?dni='.$dni );
+            header('Location: ../Vehiculos/vehiculo.php ?dni=<?php echo $_GET["dni"]; ?>&id_admin=<?php echo $_GET["id_admin"]; ?>' );
+
         }
     }
 
