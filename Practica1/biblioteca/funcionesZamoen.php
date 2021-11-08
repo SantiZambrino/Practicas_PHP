@@ -1,7 +1,7 @@
 <?php
     function Conexion(){
 
-        $db_host = "10.192.240.25:3306";
+        $db_host = "10.192.240.25:3307";
         $db_name = "bd_taller";
         $db_user = "cuentaSanti";
         $db_pass = "1234";
