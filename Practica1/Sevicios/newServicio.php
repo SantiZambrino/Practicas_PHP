@@ -91,7 +91,7 @@
     $id_matricula = "(SELECT id_matricula FROM lista_vehiculos
                                     WHERE  matricula = '$matricula' )";
 
-    if (camposCompletados($matricula, $tipoServicio, $descripcionServicio)) {
+    if (camposCompletadosNuevoServicio($matricula, $tipoServicio, $descripcionServicio)) {
         crearServicio($tipoServicio, $descripcionServicio, $conn, $dni,$id_matricula);
     }
 

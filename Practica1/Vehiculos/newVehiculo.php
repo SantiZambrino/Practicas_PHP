@@ -98,18 +98,8 @@
     $modelo = $_POST['modelo'];
     $year = $_POST['year'];
 
-    if (existeVehiculo()) {
-
-        $sql =  "INSERT INTO lista_vehiculos (matricula, marca, modelo, año, id_usuario) VALUES ( '$matricula', '$marca', '$modelo', '$year', $id_usuario)";
-
-        $results = mysqli_query($conn, $sql);
-
-        if ($results == false) {
-
-            echo mysqli_error($conn);
-        } else {
-            header('Location: ../Vehiculos/vehiculo.php?dni=' . $_GET['dni']);
-        }
+    if (comprobarDatosNuevoVehivulo($matricula, $marca, $year)) {
+        crearVehiculo($matricula,$marca, $modelo, $year, $id_usuario, $conn, $sql);
     }
     mysqli_close($conn);
     ?>
