@@ -1,10 +1,10 @@
 <?php
     function Conexion(){
 
-        $db_host = "localhost";
+        $db_host = "10.192.240.25:3307";
         $db_name = "bd_taller";
-        $db_user = "root";
-        $db_pass = "2DAW2021...";
+        $db_user = "cuentaSanti";
+        $db_pass = "1234";
 
 
         try{
@@ -65,7 +65,7 @@
         }
     }
 
-    function camposCompletados($matricula, $tipoServicio, $descripcionServicio){
+    function camposCompletadosNuevoServicio($matricula, $tipoServicio, $descripcionServicio){
         if (!empty($matricula) && !empty($tipoServicio) && !empty($descripcionServicio)) {
             return true;
         }else{
@@ -94,7 +94,7 @@
         }
     }
 
-    function noExisteUsuario($nombre, $apellidos, $dni ,$telefono, $email, $contra){
+    function camposCompletadosNuevoUsuario($nombre, $apellidos, $dni ,$telefono, $email, $contra){
         if (!empty($nombre) && !empty($apellidos) && !empty($dni) && !empty($telefono) && !empty($email) &&  !empty($contra)) {
             return true;
         }
@@ -103,11 +103,24 @@
         }
     }
 
-    function existeVehiculo(){
+    function comprobarDatosNuevoVehivulo($matricula, $marca, $year){
         if (!empty($matricula) && !empty($modelo) && !empty($year)) {
             return true;
         } else{
             return false;
+        }
+    }
+
+    function crearVehiculo($matricula,$marca, $modelo, $year, $id_usuario, $conn, $sql){
+        $sql =  "INSERT INTO lista_vehiculos (matricula, marca, modelo, año, id_usuario) VALUES ( '$matricula', '$marca', '$modelo', '$year', $id_usuario)";
+
+        $results = mysqli_query($conn, $sql);
+
+        if ($results == false) {
+
+            echo mysqli_error($conn);
+        } else {
+            header('Location: ../Vehiculos/vehiculo.php?dni=' . $_GET['dni']);
         }
     }
 ?>
