@@ -96,4 +96,11 @@
         }
     }
 
+    function existeVehiculo(){
+        if (!empty($matricula) && !empty($modelo) && !empty($year)) {
+            return true;
+        } else{
+            return false;
+        }
+    }
 ?>

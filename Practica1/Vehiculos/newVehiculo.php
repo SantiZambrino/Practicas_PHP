@@ -25,7 +25,6 @@
 
     $name = datosNombre($conn, $dni);
 
-
     $dniUsu = $_GET['dni'];
 
         ?>
@@ -99,7 +98,7 @@
     $modelo = $_POST['modelo'];
     $year = $_POST['year'];
 
-    if (!empty($matricula) && !empty($modelo) && !empty($year)) {
+    if (existeVehiculo()) {
 
         $sql =  "INSERT INTO lista_vehiculos (matricula, marca, modelo, año, id_usuario) VALUES ( '$matricula', '$marca', '$modelo', '$year', $id_usuario)";
 
