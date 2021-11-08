@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/styleHeader.css" />
+    <link rel="stylesheet" href="../styles/styleHeader.css"/>
    
     <link rel="stylesheet" href="../styles/styleLista_Admin.css">
     <link rel="shortcut icon" href="../img/favicon-logo.png" />
@@ -12,37 +12,21 @@
 </head>
 <body>
     <?php
-        session_start();
-        include "../Login/cookie.php";
+    session_start();
+    include "../biblioteca/funcionesZamoen.php";
 
-            include "../biblioteca/funcionesZamoen.php";
+    $conn = Conexion();
 
-            $conn = Conexion();
+    $dni = $_SESSION['dni'];
 
-            $dni = $_SESSION['dni'];
+    $name = datosNombre($conn, $dni);
 
-            $sqlName = "SELECT nombre FROM lista_usuario WHERE dni = '$dni'";
-
-            $resultName = mysqli_query($conn, $sqlName);
-                            
-            if ($resultName === false) {
-                    echo mysqli_error($conn);
-            } 
-            else {
-
-                $info = mysqli_fetch_array($resultName);
-
-                $name = $info['nombre'];
-
-            }
-
-            ?>
-        <div class="outer-container">
+    ?>
+    <div class="outer-container">
 
             <header id="cabecera">
             <div class="vacio">
-            
-            </div>  
+            </div>
             <div class="logo">  
                 <a href="#">
                     <img id="logo-taller" src="../img/Logo-Coche.png" alt="Logo Talleres Zamoen">
