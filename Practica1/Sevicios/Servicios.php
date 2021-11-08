@@ -142,18 +142,11 @@
                         ?>
 
                     </table>
-<<<<<<< HEAD
                         <div class="newvh">
                             <a href="../Sevicios/newServicio.php?dni=<?php echo $_GET['dni']?>&matricula=<?php echo $_GET['matricula']?>"  class="btn newvh">Nuevo Servicio</a>   
-                            <a id="comeBack" href=" ../Vehiculos/vehiculo.php?dni=<?php echo $_GET['dni']; ?>">Volver a Vehiculo</a> 
+                            <a id="comeBack" href=" ../Vehiculos/vehiculo.php?dni=<?php echo $_GET['dni']; ?>">Volver a Vehiculos</a> 
                         </div>
         
-=======
-                    <div class="newvh">
-                        <a href="../Sevicios/newServicio.php?dni=<?php echo $_GET['dni'] ?>&matricula=<?php echo $_GET['matricula'] ?>" class="btn newvh">Nuevo Servicio</a>
-                    </div>
-
->>>>>>> 03f9eefc6d905190e759b6c16e005ed6d5069bb4
                 </div>
 
 </body>

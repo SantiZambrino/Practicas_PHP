@@ -20,7 +20,9 @@
 
     $conn = Conexion();
 
+
     $dni = $_SESSION['dni'];
+
 
     $name = datosNombre($conn, $dni);
 
@@ -40,7 +42,10 @@
                 <div class="info-usu">
                     <h3><?php echo ucfirst($name); ?></h3>
                     <?php
-                    if ($_SESSION['id_admin'] == 1) {
+
+                    // $id_admin = $_GET['id_admin'];
+
+                    if ($_SESSION['id_admin'] == 1 or $_GET['id_admin'] == 1) {
                     ?>
                         <a id="btn-Panel" href="../Login/lista_Admin.php">Volver al Panel</a>
                     <?php
