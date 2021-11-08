@@ -24,7 +24,13 @@
 
     $name = datosNombre($conn, $dni);
 
-    ?>
+            $name = $info['nombre'];
+
+
+        $dniUsu = $_GET['dni'];
+         $matricula = $_GET['matricula'];
+
+            ?>
     <div class="outer-container">
 
         <header id="cabecera">
@@ -65,8 +71,9 @@
                 <textarea rows="5" cols="50" name="descripcion" id="descripcion" placeholder="Por favor, indique la descripcion" class="input-style" /></textarea>
 
                 <div class="box-btn">
-                    <button class="btn registrar" value="enviar">Registrar</button>
-                    <button class="btn reset" type="reset" value="reset">Borrar</button>
+                    <button  class="btn registrar" value="enviar">Registrar</button>
+                    <button  class="btn reset" type="reset" value="reset">Borrar</button>
+                    <a id="comeBack" href="Servicios.php?dni=<?php echo $_GET['dni'];?> &matricula=<?php echo $_GET['matricula']; ?>">Volver Atrás</a>
                 </div>
 
             </form>

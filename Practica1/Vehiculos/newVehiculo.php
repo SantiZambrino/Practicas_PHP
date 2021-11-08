@@ -25,7 +25,10 @@
 
     $name = datosNombre($conn, $dni);
 
-    ?>
+
+    $dniUsu = $_GET['dni'];
+
+        ?>
     <div class="outer-container">
 
         <header id="cabecera">
@@ -72,8 +75,10 @@
                 <input name="year" id="year" type="date" placeholder="Año fabricación" class="input-style" />
 
                 <div class="box-btn">
-                    <button class="btn registrar" value="enviar">Registrar</button>
-                    <button class="btn reset" type="reset" value="reset">Borrar</button>
+                <button class="btn registrar" value="enviar">Registrar</button>
+                <button  class="btn reset" type="reset" value="reset">Borrar</button>
+                <a id="comeBack" href=" ../Vehiculos/vehiculo.php?dni=<?php echo $_GET['dni']; ?>">Volver Atrás</a>
+
                 </div>
 
             </form>
