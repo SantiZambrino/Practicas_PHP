@@ -97,7 +97,7 @@
                             <td><?php echo $valor['email']; ?></td>
                             <td style="border:  none;">
 
-                                <button class="editUser" id="editUser">Editar Usuario</button> 
+                                <a class="editUser" id="editUser">Editar Usuario</a> 
                                 <div  id="tvesModal" class="modalContainer ">
                                     <div class="modal-content">
                                     <span class="close">×</span> <h2>Actualizar usuario</h2>
