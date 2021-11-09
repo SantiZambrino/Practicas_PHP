@@ -41,10 +41,10 @@
     </div>
 
     <script>
-        var mostrarContrasena = document.getElementById("mostrarContrasena");
+        var mostrarContrasena = document.getElementById("mostrarContrasena");//creamos variables apra almacenar la contraseña y mostrarla cuando utilicemos la funcion contraeña 
         var mostrar = document.getElementById('contra_usu_login');
 
-        mostrarContrasena.addEventListener('click', function(e) {
+        mostrarContrasena.addEventListener('click', function(e) {//funcion donde al pulsar en mostrar, mostrara u ocultara la contraseña para que el usuario pueda ver si la ha introducido correctamente
 
             e.preventDefault();
             if (mostrar.type == "password") {
@@ -61,28 +61,28 @@
 
     <?php
 
-    include "../biblioteca/funcionesZamoen.php";
+    include "../biblioteca/funcionesZamoen.php";//incluimos el archivo php donde hemos realizado funciones para aligerar el codigo y que se vea mas limpio.
 
-    $conn = Conexion();
+    $conn = Conexion();//almacenamos enla variable la conexion guardada en la funcion que esta en el archivo funciones.
 
-    if (!empty($_POST['dni']) && !empty($_POST['contra_usu_login'])) {
+    if (!empty($_POST['dni']) && !empty($_POST['contra_usu_login'])) {// condiciones para acceder a la Api, a traves de este if realizamos las comprobaciones con la base de datos y lo introducido por el usuario.
 
         session_start();
 
         $dni = $_POST['dni'];
-        $contra = md5($_POST['contra_usu_login']);
+        $contra = md5($_POST['contra_usu_login']);//usamos el metodo md5 para encriptar la contraseña y sea mas segura.
 
 
-        $sql = "SELECT * FROM lista_usuario WHERE contrasena = '$contra' AND dni = '$dni'";
+        $sql = "SELECT * FROM lista_usuario WHERE contrasena = '$contra' AND dni = '$dni'";//consulta SQl para verificar que existe en base de datos.
 
-        $result = mysqli_query($conn, $sql);
+        $result = mysqli_query($conn, $sql); //almacenamos el resultado en la variable
 
 
-        if (!$result) {
+        if (!$result) {//if de comprobacion si la consulta devuelve resultado, nos dara acceso.
             exit;
         } else {
 
-            if ($valores = mysqli_fetch_array($result)) {
+            if ($valores = mysqli_fetch_array($result)) {//en este if comprobamos el tipo de credencial. si es usuario o administrador. para acceder a unos privilegios u otros.
                 include "../Login/cookie.php";
                 $_SESSION['id_admin'] = $valores['id_admin'];
                 $_SESSION['dni'] = $valores['dni'];
@@ -103,50 +103,6 @@
         }
     }
     ?>
-
-
-    <?php
-    /*
-        //CREACCIÓN DE SESION PARA COMPARAR SI EL USUARIO EXISTE.
-        //PARA MOSTRAR MENSAJE DE ERROR (https://es.stackoverflow.com/questions/150719/mostrar-mensaje-usuario-y-o-contrase%C3%B1a-incorrecta)
-
-        session_start();
-
-        $nombre = $_POST['name_usu'];
-        $password = $_POST['pass_usu'];
-
-        // se asume conexion en $conn incluido desde conexion.php, ejemlo:
-        $name = $db_host = "localhost";
-                $db_name = "bd_taller";
-                $db_user = "root";
-                $db_pass = "2DAW2021...";
-
-                $name = strtolower($name);
-                
-        $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
-
-        // añadiría un limit 1 a la consulta pues solo esperamos un registro
-        $consulta = mysqli_query ($conn, "SELECT * FROM sesion WHERE user = '$nombre' AND pass = '$password'");  
-
-        // esto válida si la consulta se ejecuto correctamente o no pero en ningún caso válida si devolvió algún registro
-        if(!$consulta){ 
-            // echo "Usuario no existe " . $nombre . " " . $password. " o hubo un error " . 
-            echo mysqli_error($mysqli);
-            // si la consulta falla es bueno evitar que el código se siga ejecutando
-            exit;
-        } 
-        
-        // validemos pues si se obtuvieron resultados 
-        // Obtenemos los resultados con mysqli_fetch_assoc
-        // si no hay resultados devolverá NULL que al convertir a boleano para ser evaluado en el if será FALSE
-        if($user = mysqli_fetch_assoc($consulta)) {
-            // el usuario y la pwd son correctas
-        } else {
-            // Usuario incorrecto o no existe
-        }
-    */ ?>
-
-
 </body>
 
 </html>

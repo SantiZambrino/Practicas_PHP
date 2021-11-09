@@ -18,7 +18,7 @@
     session_start();
     include "../biblioteca/funcionesZamoen.php";
 
-    $conn = Conexion();
+    $conn = Conexion();//funcion conexion de bibliote zamoen
 
 
     $dni = $_SESSION['dni'];
@@ -27,7 +27,7 @@
     $name = datosNombre($conn, $dni);
 
     ?>
-    <div class="outer-container">
+    <div class="outer-container"> <!-- estructura html -->
 
         <header id="cabecera">
             <div class="vacio">

@@ -15,21 +15,20 @@
 <body>
     <?php
 
-    include "../biblioteca/funcionesZamoen.php";
+    include "../biblioteca/funcionesZamoen.php"; // incluimos la biblioteca de funciones
 
-    $conn = Conexion();
+    $conn = Conexion(); //almacenas la conexion en la variable
 
-    session_start();
+    session_start();//inicio de sesion
 
-    $dni = $_SESSION['dni'];
+    $dni = $_SESSION['dni']; //guardamos en variable el dni de la sesion
 
-    $name = datosNombre($conn, $dni);
-
+    $name = datosNombre($conn, $dni); //almacenamos en la variable los datos 
 
     $dniUsu = $_GET['dni'];
 
         ?>
-    <div class="outer-container">
+     <div class="outer-container">  <!--estructura html de la pagina -->
 
         <header id="cabecera">
             <div class="vacio">
@@ -44,7 +43,7 @@
                 <div class="info-usu">
                     <h3><?php echo ucfirst($name); ?></h3>
                     <?php
-                    if ($_SESSION['id_admin'] == 1) {
+                    if ($_SESSION['id_admin'] == 1) { //if con las condiciones para el inicio de perfil del usuario.
                     ?>
                         <a id="btn-Panel" href="../Login/lista_Admin.php">Volver al Panel</a>
                     <?php
@@ -53,7 +52,7 @@
                     <a id="btn-logOut" href="../Login/logOut.php">Cerrar Sesión</a>
                 </div>
                 <div class="cookies">
-                    <p><?php echo 'Ultima conexion realizada el: ' . $_COOKIE[$_SESSION['dni'] . 'Cookie']; ?></p>
+                    <p><?php echo 'Ultima conexion realizada el: ' . $_COOKIE[$_SESSION['dni'] . 'Cookie']; ?></p> <!-- codigo php insertado en el html para las cookis-->
                 </div>
             </div>
         </header>
@@ -89,7 +88,7 @@
 
     <?php
 
-    $dni = $_GET['dni'];
+    $dni = $_GET['dni']; //codigo para añadir nuevo vehiculo
 
     $id_usuario = "(SELECT id_usuario FROM lista_usuario
                                 WHERE dni = '$dni ' )";
@@ -99,20 +98,10 @@
     $modelo = $_POST['modelo'];
     $year = $_POST['year'];
 
-    if (!empty($matricula) && !empty($modelo) && !empty($year)) {
-
-        $sql =  "INSERT INTO lista_vehiculos (matricula, marca, modelo, año, id_usuario) VALUES ( '$matricula', '$marca', '$modelo', '$year', $id_usuario)";
-
-        $results = mysqli_query($conn, $sql);
-
-        if ($results == false) {
-
-            echo mysqli_error($conn);
-        } else {
-            header('Location: ../Vehiculos/vehiculo.php?dni=' . $_GET['dni']);
-        }
+    if (comprobarDatosNuevoVehivulo($matricula, $marca, $year)) { //comprobamos datos rellenos a traves de funcion 
+        crearVehiculo($matricula,$marca, $modelo, $year, $id_usuario, $conn, $sql); //añadimos datos a traves de funcion
     }
-    mysqli_close($conn);
+    mysqli_close($conn); //cerramos conexion de base de datos. 
     ?>
 </body>
 
