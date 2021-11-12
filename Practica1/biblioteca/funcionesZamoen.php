@@ -1,10 +1,10 @@
 <?php
     function Conexion(){
 
-        $db_host = "10.192.240.25:3307";
+        $db_host = "localhost";
         $db_name = "bd_taller";
-        $db_user = "cuentaSanti";
-        $db_pass = "1234";
+        $db_user = "root";
+        $db_pass = "2DAW2021...";
 
 
         try{
@@ -65,7 +65,7 @@
         }
     }
 
-    function camposCompletadosNuevoServicio($matricula, $tipoServicio, $descripcionServicio){
+    function camposCompletados($matricula, $tipoServicio, $descripcionServicio){
         if (!empty($matricula) && !empty($tipoServicio) && !empty($descripcionServicio)) {
             return true;
         }else{
@@ -94,7 +94,7 @@
         }
     }
 
-    function camposCompletadosNuevoUsuario($nombre, $apellidos, $dni ,$telefono, $email, $contra){
+    function noExisteUsuario($nombre, $apellidos, $dni ,$telefono, $email, $contra){
         if (!empty($nombre) && !empty($apellidos) && !empty($dni) && !empty($telefono) && !empty($email) &&  !empty($contra)) {
             return true;
         }

@@ -11,7 +11,7 @@
 </head>
 <body>
 
-    <div class="outer-container">
+    <div class="outer-container"> <!--formulario html para crear nuevo usuario  -->
 
         <header id="cabecera">
         <a href="../Vehiculos/vehiculo.php?dni=<?php echo $dni ?>">
@@ -55,9 +55,9 @@
     </div>
 
     <?php
-        include "../biblioteca/funcionesZamoen.php";
+        include "../biblioteca/funcionesZamoen.php"; //inclusion de biblioteca de funciones
 
-        $conn = Conexion();
+        $conn = Conexion();  // conexion a traves de la funcion creada en la biblioteca
         $nombre = $_POST['nombre_usu'];
         $apellidos = $_POST['apellidos_usu'];
         $dni = $_POST['dni'];
@@ -65,11 +65,11 @@
         $email = $_POST['email_usu'];
         $contra = md5($_POST['contra_usu']);
 
-        if(camposCompletadosNuevoUsuario($nombre, $apellidos, $dni ,$telefono, $email, $contra)){
+        if(camposCompletadosNuevoUsuario($nombre, $apellidos, $dni ,$telefono, $email, $contra)){ //codigo simplificado a traves de las funciones, creadas en la base de datos. 
             crearUsuario($nombre, $apellidos, $dni, $telefono, $email, $contra, $conn);
         }
 
-        mysqli_close($conn);
+        mysqli_close($conn); //cierre de conexion a base de datos. 
 
     ?>
     
