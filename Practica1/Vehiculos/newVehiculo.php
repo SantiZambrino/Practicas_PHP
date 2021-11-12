@@ -76,7 +76,7 @@
                 <div class="box-btn">
                 <button class="btn registrar" value="enviar">Registrar</button>
                 <button  class="btn reset" type="reset" value="reset">Borrar</button>
-                
+                <a id="comeBack" href=" ../Vehiculos/vehiculo.php?dni=<?php echo $_GET['dni']; ?>">Volver Atrás</a>
             </div>
             
         </form>
@@ -98,7 +98,7 @@
     $modelo = $_POST['modelo'];
     $year = $_POST['year'];
 
-    if (comprobarDatosNuevoVehivulo($matricula, $marca, $year)) { //comprobamos datos rellenos a traves de funcion 
+    if (camposCompletados($matricula, $marca, $year)) { //comprobamos datos rellenos a traves de funcion 
         crearVehiculo($matricula,$marca, $modelo, $year, $id_usuario, $conn, $sql); //añadimos datos a traves de funcion
     }
     mysqli_close($conn); //cerramos conexion de base de datos. 
