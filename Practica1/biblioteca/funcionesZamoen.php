@@ -121,6 +121,7 @@
             echo mysqli_error($conn);
         } else {
             header('Location: ../Vehiculos/vehiculo.php?dni=' . $_GET['dni']);
+            
         }
     }
 ?>
