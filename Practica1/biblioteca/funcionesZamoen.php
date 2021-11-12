@@ -1,10 +1,11 @@
 <?php
     function Conexion(){
 
-        $db_host = "localhost";
+        $db_host = "10.192.240.25:3307";
         $db_name = "bd_taller";
-        $db_user = "root";
-        $db_pass = "2DAW2021...";
+        $db_user = "cuentaSanti";
+        $db_pass = "1234";
+        
 
 
         try{
@@ -94,7 +95,7 @@
         }
     }
 
-    function noExisteUsuario($nombre, $apellidos, $dni ,$telefono, $email, $contra){
+    function camposCompletadosNuevoUsuario($nombre, $apellidos, $dni ,$telefono, $email, $contra){
         if (!empty($nombre) && !empty($apellidos) && !empty($dni) && !empty($telefono) && !empty($email) &&  !empty($contra)) {
             return true;
         }

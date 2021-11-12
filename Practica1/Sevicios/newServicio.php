@@ -91,7 +91,7 @@
     $id_matricula = "(SELECT id_matricula FROM lista_vehiculos
                                     WHERE  matricula = '$matricula' )";
 
-    if (camposCompletadosNuevoServicio($matricula, $tipoServicio, $descripcionServicio)) { //funcion añadir nuevo servicio simplificado a traves de funciones.
+    if (camposCompletados($matricula, $tipoServicio, $descripcionServicio)) { //funcion añadir nuevo servicio simplificado a traves de funciones.
         crearServicio($tipoServicio, $descripcionServicio, $conn, $dni,$id_matricula);
     }
 
