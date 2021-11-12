@@ -7,9 +7,11 @@
 
     $id_usuario = $_POST['id_usuario'];
 
+    echo $id_usuario.' ';
+
     
     $sqlVehiculo = "SELECT  id_matricula FROM lista_vehiculos
-                                WHERE  id_usuario = '$id_usuario'";
+                                WHERE  id_usuario = $id_usuario";
                                 
      $resultsVehiculos = mysqli_query($conn, $sqlVehiculo);
 
@@ -18,12 +20,14 @@
     }
     else {
 
-        $listaVehiculos = mysqli_fetch_array($resultsVehiculos);
+        //$listaVehiculos = mysqli_fetch_array($resultsVehiculos);
 
-        foreach ($listaVehiculos as $id) {
-
-            echo $id.' ';
+        // print_r($resultsVehiculos);
+        
+        foreach($resultsVehiculos as $id){
+            echo $id['id_matricula'].' | ';
         }
+
 
     }
 
