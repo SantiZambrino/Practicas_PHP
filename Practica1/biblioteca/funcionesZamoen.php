@@ -103,4 +103,25 @@
         }
     }
 
+    function comprobarDatosNuevoVehivulo($matricula, $marca, $year){
+        if (!empty($matricula) && !empty($modelo) && !empty($year)) {
+            return true;
+        } else{
+            return false;
+        }
+    }
+
+    function crearVehiculo($matricula,$marca, $modelo, $year, $id_usuario, $conn, $sql){
+        $sql =  "INSERT INTO lista_vehiculos (matricula, marca, modelo, año, id_usuario) VALUES ( '$matricula', '$marca', '$modelo', '$year', $id_usuario)";
+
+        $results = mysqli_query($conn, $sql);
+
+        if ($results == false) {
+
+            echo mysqli_error($conn);
+        } else {
+            header('Location: ../Vehiculos/vehiculo.php?dni=' . $_GET['dni']);
+            
+        }
+    }
 ?>
