@@ -18,17 +18,25 @@
     }
     else {
 
-        $lista_id = array();
+        $listadoVehiculos = mysqli_fetch_array($resultsVehiculos);
 
-        foreach ($resultsVehiculos as $vehiculos) {
+        foreach($listadoVehiculos as $id){
 
-            foreach ($vehiculos as $id){
-
-                $lista_id.array_push($id);
-            }
+            echo $id.' ';
         }
 
-        print_r($lista_id);
+
+        // $lista_id = array();
+
+        // foreach ($resultsVehiculos as $vehiculos) {
+
+        //     foreach ($vehiculos as $id){
+
+        //         print_r($id);
+        //     }
+        // }
+
+        // print_r($lista_id);
 
     }
 

@@ -76,11 +76,11 @@
                 <div class="box-btn">
                 <button class="btn registrar" value="enviar">Registrar</button>
                 <button  class="btn reset" type="reset" value="reset">Borrar</button>
-                <a id="comeBack" href=" ../Vehiculos/vehiculo.php?dni=<?php echo $_GET['dni']; ?>">Volver Atrás</a>
-
-                </div>
-
-            </form>
+                
+            </div>
+            
+        </form>
+        
 
         </div>
 
