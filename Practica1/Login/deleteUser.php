@@ -18,25 +18,12 @@
     }
     else {
 
-        $listadoVehiculos = mysqli_fetch_array($resultsVehiculos);
+        $listaVehiculos = mysqli_fetch_array($resultsVehiculos);
 
-        foreach($listadoVehiculos as $id){
+        foreach ($listaVehiculos as $id) {
 
             echo $id.' ';
         }
-
-
-        // $lista_id = array();
-
-        // foreach ($resultsVehiculos as $vehiculos) {
-
-        //     foreach ($vehiculos as $id){
-
-        //         print_r($id);
-        //     }
-        // }
-
-        // print_r($lista_id);
 
     }
 
