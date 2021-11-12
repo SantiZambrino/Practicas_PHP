@@ -115,7 +115,14 @@
                                     </div>
                                 </div>  
                             </td>
-                            <td style="border:  none;"><a id="deleteUser">Eliminar Usuario</a></td>
+                            <td style="border:  none;">
+
+                                <form action="../Login/deleteUser.php" method="POST">
+                                    <input type="hidden" name="id_usuario" value="<?php echo $valor['id_usuario']; ?>">
+                                    <button id="deleteUser">Eliminar Usuario</button>
+                                </form>
+
+                            </td>
 
                             <script>
                                     if(document.getElementById("editUser")){
