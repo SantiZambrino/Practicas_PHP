@@ -24,11 +24,11 @@
 
     $name = datosNombre($conn, $dni);
 
-            $name = $info['nombre'];
+    // $name = $info['nombre'];
 
 
-        $dniUsu = $_GET['dni'];
-         $matricula = $_GET['matricula'];
+    $dniUsu = $_GET['dni'];
+    $matricula = $_GET['matricula'];
 
             ?>
     <div class="outer-container"> <!-- codigo de la pagina en html -->
@@ -62,7 +62,7 @@
 
         <div class="container-login-servicio"> <!-- codigo html para la estructura de nuestra pagina.  -->
 
-            <form id="form-new-servicio" name="form-new-servicio" method="post">
+            <form id="form-new-servicio" name="form-new-servicio" method="POST">
 
                 <label for="servicio">Tipo de Servicio</label>
                 <input name="servicio" id="servicio" type="text" placeholder="Por favor, indique el servicio" class="input-style" />
@@ -83,17 +83,22 @@
     </div>
 
     <?php
-    $dni = $_GET['dni'];
-    $matricula = $_GET['matricula'];
-    $tipoServicio = $_POST['servicio'];
-    $descripcionServicio = $_POST['descripcion'];
+    
+    if(!empty($_POST['servicio']) && !empty($_POST['descripcion'])){
 
-    $id_matricula = "(SELECT id_matricula FROM lista_vehiculos
-                                    WHERE  matricula = '$matricula' )";
+        $dni = $_GET['dni'];
+        $matricula = $_GET['matricula'];
+        $tipoServicio = $_POST['servicio'];
+        $descripcionServicio = $_POST['descripcion'];
 
-    if (camposCompletados($matricula, $tipoServicio, $descripcionServicio)) { //funcion añadir nuevo servicio simplificado a traves de funciones.
-        crearServicio($tipoServicio, $descripcionServicio, $conn, $dni,$id_matricula);
+        $id_matricula = "(SELECT id_matricula FROM lista_vehiculos
+                            WHERE  matricula = '$matricula' )";
+    
+        if (camposCompletados($matricula, $tipoServicio, $descripcionServicio)) { //funcion añadir nuevo servicio simplificado a traves de funciones.
+            crearServicio($tipoServicio, $descripcionServicio, $conn, $dni,$id_matricula);
+        }
     }
+
 
     mysqli_close($conn);
 

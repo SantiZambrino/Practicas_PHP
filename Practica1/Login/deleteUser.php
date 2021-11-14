@@ -6,9 +6,6 @@
     $conn = Conexion();
 
     $id_usuario = $_POST['id_usuario'];
-
-    echo $id_usuario.' ';
-
     
     $sqlVehiculo = "SELECT  id_matricula FROM lista_vehiculos
                                 WHERE  id_usuario = $id_usuario";
@@ -19,18 +16,48 @@
         echo mysqli_error($conn);
     }
     else {
-
-        //$listaVehiculos = mysqli_fetch_array($resultsVehiculos);
-
-        // print_r($resultsVehiculos);
         
-        foreach($resultsVehiculos as $id){
-            echo $id['id_matricula'].' | ';
+
+        $sqlDeleteServicios = "DELETE FROM lista_servicios WHERE id_matricula IN 
+                                (SELECT id_matricula FROM lista_vehiculos WHERE id_usuario = '$id_usuario')";
+
+
+        $resultDeleteServicios = mysqli_query($conn, $sqlDeleteServicios);
+
+        if($resultDeleteServicios === false){
+            echo mysqli_error($conn);
         }
+        else{
+
+            $sqlDeleteVehiculos = "DELETE FROM lista_vehiculos WHERE id_matricula IN 
+            (SELECT id_matricula FROM lista_vehiculos WHERE id_usuario = '$id_usuario')";
 
 
+            $resultDeleteVehiculos = mysqli_query($conn, $sqlDeleteVehiculos);
+
+            if($resultDeleteVehiculos === false){
+            echo mysqli_error($conn);
+            }
+            else{
+
+                $sqlDeleteUser = "DELETE FROM lista_usuario WHERE id_usuario = $id_usuario";
+            
+                $resultDeleteUser = mysqli_query($conn, $sqlDeleteUser);
+
+                if($resultDeleteUser === false){
+                    echo mysqli_error($conn);
+                }
+                else{
+
+                    header('Location: ./login.php');
+                }
+
+
+            }
+
+        }
     }
 
-
+    mysqli_close($conn);
 
 ?>
