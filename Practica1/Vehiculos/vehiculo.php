@@ -43,8 +43,6 @@
                     <h3><?php echo ucfirst($name); ?></h3>
                     <?php
 
-                    // $id_admin = $_GET['id_admin'];
-
                     if ($_SESSION['id_admin'] == 1) {
              
                     ?>
@@ -62,6 +60,8 @@
         <?php
 
         $dniUsu = $_GET['dni'];
+        // $dniUsu = "12345678p";
+
 
         $sqlFirst =  "SELECT nombre, apellidos, dni, telefono, email, id_usuario
                             FROM lista_usuario
@@ -207,7 +207,7 @@
                                 foreach ($valor as $k) {
 
                                 ?>
-                                    <td><a href="../Sevicios/Servicios.php?dni=<?php echo $_GET['dni']; ?>&matricula=<?php echo ($valor["matricula"]); ?>"><?php echo $k; ?></a></td>
+                                    <td><a href="../Sevicios/Servicios.php?dni=<?php echo $_GET['dni'];?>&matricula=<?php echo ($valor["matricula"]);?>"><?php echo $k; ?></a></td>
                                 <?php
                                 }
 

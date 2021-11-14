@@ -100,7 +100,7 @@
                     ?>
                     </tr>
                     <tr>
-                        <td style="text-align: center; border: none;" colspan="6"><a class="btn newUser" href="../Login/newUser.php">Nuevo Usuario</a></td>
+                        <td style="text-align: center; border: none;" colspan="6"><a class="btn newUser" style="color:#fff; font-weight:400;" href="../Login/newUser.php">Nuevo Usuario</a></td>
                     
                     </tr>
                 </table>
