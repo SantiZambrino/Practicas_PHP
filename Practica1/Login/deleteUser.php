@@ -49,7 +49,14 @@
                 }
                 else{
 
-                    header('Location: ./login.php');
+                    if($_SESSION['id_admin'] == 1){
+
+                        header('Location: ./lista_Admin.php');
+                    }
+                    else{
+                        
+                        header('Location: ./login.php');
+                    }
                 }
 
 
