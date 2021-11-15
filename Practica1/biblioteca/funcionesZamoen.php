@@ -77,12 +77,9 @@
     function crearUsuario($nombre, $apellidos, $dni, $telefono, $email, $contra, $conn){
 
         session_start();
-
-        $_SESSION['dni'] = $dni;
         
         crearCookie($_SESSION['dni'] . 'Cookie');
         $id_admin = 2;
-        $_SESSION['id_admin'] = 2;
 
         $sql =  "INSERT INTO lista_usuario (nombre, apellidos, dni, telefono, email, contrasena, id_admin) VALUES ('$nombre', '$apellidos', '$dni', '$telefono', '$email', '$contra', '$id_admin')";
                 
@@ -93,7 +90,7 @@
         }
         else{
 
-            header('Location: ../Vehiculos/vehiculo.php?dni=<?php echo $dni;?>');
+            header("Location: ../Vehiculos/vehiculo.php?dni=$dni");
 
         }
     }

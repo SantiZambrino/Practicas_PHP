@@ -60,7 +60,6 @@
         <?php
 
         $dniUsu = $_GET['dni'];
-        // $dniUsu = "12345678p";
 
 
         $sqlFirst =  "SELECT nombre, apellidos, dni, telefono, email, id_usuario
