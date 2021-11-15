@@ -28,22 +28,22 @@
             <form id="form-new-user" name="form-new-user" action="../Login/newUser.php" method="POST">
 
                 <label for="nombre-usu">Nombre</label>
-                <input type="text" id="nombre_usu" class="input-style" name="nombre_usu">
+                <input type="text" id="nombre_usu" class="input-style" name="nombre_usu" required>
 
                 <label for="apellidos-usu">Apellidos</label>
-                <input type="text" id="apellidos_usu" class="input-style" name="apellidos_usu">
+                <input type="text" id="apellidos_usu" class="input-style" name="apellidos_usu" required>
 
                 <label for="dni-usu">DNI</label>
-                <input type="text" id="dni" class="input-style" name="dni">
+                <input type="text" id="dni" class="input-style" name="dni" required>
 
                 <label for="contrasena-usu">Contraseña</label>
-                <input type="text" id="contra_usu" class="input-style" name="contra_usu">
+                <input type="text" id="contra_usu" class="input-style" name="contra_usu" required>
 
                 <label for="telefono-usu">Telefono</label>
-                <input type="tel" id="telefono_usu" class="input-style" name="telefono_usu">
+                <input type="tel" id="telefono_usu" class="input-style" name="telefono_usu" required>
 
                 <label for="email-usu">Email</label>
-                <input type="email" id="email_usu" class="input-style" name="email_usu">
+                <input type="email" id="email_usu" class="input-style" name="email_usu" required>
 
           
                 <div class="box-btn">
