@@ -11,6 +11,10 @@
 </head>
 <body>
 
+    <?php
+        session_start();
+    ?>
+
     <div class="outer-container"> <!--formulario html para crear nuevo usuario  -->
 
         <header id="cabecera">
@@ -45,7 +49,19 @@
                 <div class="box-btn">
                 <button  class="btn registrar" value="enviar">Registrar</button>
                 <button  class="btn reset" type="reset" value="reset">Borrar</button>
-                <a id="comeBack" href="./login.php">Volver Atrás</a>
+                <?php
+                     if( !isset($_SESSION['id_admin'])){
+                        ?>
+                        <a id="comeBack" href="./login.php">Volver Atrás</a>
+                        <?php  
+                    }
+                    else{
+                        ?>
+                        <a id="comeBack" href="./lista_Admin.php">Volver Atrás</a>
+                        <?php    
+                    } 
+                    ?>
+                
                 </div>
           
             </form>
