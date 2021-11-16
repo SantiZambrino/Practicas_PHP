@@ -74,15 +74,19 @@
         include "../biblioteca/funcionesZamoen.php"; //inclusion de biblioteca de funciones
 
         $conn = Conexion();  // conexion a traves de la funcion creada en la biblioteca
-        $nombre = $_POST['nombre_usu'];
-        $apellidos = $_POST['apellidos_usu'];
-        $dni = $_POST['dni'];
-        $telefono = $_POST['telefono_usu'];
-        $email = $_POST['email_usu'];
-        $contra = md5($_POST['contra_usu']);
 
-        if(camposCompletadosNuevoUsuario($nombre, $apellidos, $dni ,$telefono, $email, $contra)){ //codigo simplificado a traves de las funciones, creadas en la base de datos. 
-            crearUsuario($nombre, $apellidos, $dni, $telefono, $email, $contra, $conn);
+        if(!empty($_POST['nombre_usu']) && !empty($_POST['apellidos_usu']) && !empty($_POST['dni']) && !empty($_POST['telefono_usu']) && !empty($_POST['email_usu']) && !empty($_POST['contra_usu'])){
+
+            $nombre = $_POST['nombre_usu'];
+            $apellidos = $_POST['apellidos_usu'];
+            $dni = $_POST['dni'];
+            $telefono = $_POST['telefono_usu'];
+            $email = $_POST['email_usu'];
+            $contra = md5($_POST['contra_usu']);
+
+            if(camposCompletadosNuevoUsuario($nombre, $apellidos, $dni ,$telefono, $email, $contra)){ //codigo simplificado a traves de las funciones, creadas en la base de datos. 
+                crearUsuario($nombre, $apellidos, $dni, $telefono, $email, $contra, $conn);
+            }
         }
 
         mysqli_close($conn); //cierre de conexion a base de datos. 
