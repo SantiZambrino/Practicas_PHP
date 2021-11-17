@@ -79,6 +79,11 @@
 
 
         if (!$result) {//if de comprobacion si la consulta devuelve resultado, nos dara acceso.
+            ?>
+            <script>alert('Usuario o contraseña incorrecta.<br>Introduzca los datos');
+                console.log('hola');
+            </script>
+            <?php 
             exit;
         } else {
 

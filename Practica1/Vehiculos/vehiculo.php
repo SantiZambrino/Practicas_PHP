@@ -43,8 +43,6 @@
                     <h3><?php echo ucfirst($name); ?></h3>
                     <?php
 
-                    // $id_admin = $_GET['id_admin'];
-
                     if ($_SESSION['id_admin'] == 1) {
              
                     ?>
@@ -63,7 +61,8 @@
 
         $dniUsu = $_GET['dni'];
 
-        $sqlFirst =  "SELECT nombre, apellidos, dni, telefono, email
+
+        $sqlFirst =  "SELECT nombre, apellidos, dni, telefono, email, id_usuario
                             FROM lista_usuario
                             WHERE dni = '$dniUsu'";
 
@@ -95,6 +94,75 @@
                             <td><?php echo $dniUsu; ?></td>
                             <td><?php echo $valor['telefono']; ?></td>
                             <td><?php echo $valor['email']; ?></td>
+                            <td style="border:  none;">
+
+                                <a class="editUser" id="editUser">Editar Usuario</a> 
+                                <div  id="tvesModal" class="modalContainer ">
+                                    <div class="modal-content">
+                                    <span class="close">×</span> <h2>Actualizar usuario</h2>
+
+                                    <form action ="../Login/updateUser.php" method ="POST">
+                                        <input type ="hidden" name ="id_usuario" value ="<?php echo $valor['id_usuario']; ?>">
+                                        <input type ="text"  name ="nombre" value ="<?php echo $valor['nombre']; ?>">
+                                        <input type ="text" name ="apellidos" value ="<?php echo $valor['apellidos']; ?>">
+                                        <input type ="text" name ="dni" value ="<?php echo $valor['dni']; ?>">
+                                        <input type ="tel" name = "telefono" value ="<?php echo $valor['telefono']; ?>">
+                                        <input type ="email" name ="email" value ="<?php echo $valor['email']; ?>">
+                                        <button class="editUser" id="updateUser">Actualizar Usuario</button>
+                                    </form>
+
+                                    </div>
+                                </div>  
+                            </td>
+                            <td style="border:  none;">
+
+                                <form action="../Login/deleteUser.php" method="POST">
+                                    <input type="hidden" name="id_usuario" value="<?php echo $valor['id_usuario']; ?>">
+                                    <button id="deleteUser">Eliminar Usuario</button>
+                                </form>
+
+                            </td>
+
+                            <script>
+                                    if(document.getElementById("editUser")){
+                                        var modal = document.getElementById("tvesModal");
+                                        var btn = document.getElementById("editUser");
+                                        var span = document.getElementsByClassName("close")[0];
+                                        var body = document.getElementsByTagName("body")[0];
+                                        var btn_update = document.getElementById('updateUser');
+
+                                        btn.onclick = function() {
+                                            modal.style.display = "block";
+                                            body.style.position = "static";
+                                            body.style.height = "100%";
+                                            body.style.overflow = "hidden";
+                                        }
+
+                                        span.onclick = function() {
+                                            modal.style.display = "none";
+                                            body.style.position = "inherit";
+                                            body.style.height = "auto";
+                                            body.style.overflow = "visible";
+                                        }
+
+                                        btn_update.onclick = function() {
+                                            modal.style.display = "none";
+                                            body.style.position = "inherit";
+                                            body.style.height = "auto";
+                                            body.style.overflow = "visible";
+                                            
+                                        }
+
+                                        window.onclick = function(event) {
+                                            if (event.target == modal) {
+                                            modal.style.display = "none";
+                                            body.style.position = "inherit";
+                                            body.style.height = "auto";
+                                            body.style.overflow = "visible";
+                                            }
+                                        }
+                                    }
+                            </script>
                         <?php
                         }
 
@@ -138,7 +206,7 @@
                                 foreach ($valor as $k) {
 
                                 ?>
-                                    <td><a href="../Sevicios/Servicios.php?dni=<?php echo $_GET['dni']; ?>&matricula=<?php echo ($valor["matricula"]); ?>"><?php echo $k; ?></a></td>
+                                    <td><a href="../Sevicios/Servicios.php?dni=<?php echo $_GET['dni'];?>&matricula=<?php echo ($valor["matricula"]);?>"><?php echo $k; ?></a></td>
                                 <?php
                                 }
 
@@ -168,3 +236,4 @@
 </body>
 
 </html>
+

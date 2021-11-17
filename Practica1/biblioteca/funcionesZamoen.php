@@ -1,13 +1,14 @@
-<?php //archivo donde creamos funciones para optimizar aquellos fragmentos de codigo que son recurrentes en todos los archivos. 
-    function Conexion(){//funcion para conectar a con el servidor y la base de datos.
+<?php
+    function Conexion(){
 
-        $db_host = "10.192.240.25:3307";
+        $db_host = "localhost";
         $db_name = "bd_taller";
-        $db_user = "cuentaSanti";
-        $db_pass = "1234";
+        $db_user = "root";
+        $db_pass = "2DAW2021...";
+        
 
 
-        try{//try and catch para capturar las excepciones y mostrar el error al usuario.
+        try{
             $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
         }
         catch(PDOException $e){
@@ -20,7 +21,7 @@
         return $conn;
     }    
 
-    function datosNombre($conn, $dni){//funcion para almacenar los datos de los usuarios y realizar la consulta a la base de datos. 
+    function datosNombre($conn, $dni){
     
         $sqlName = "SELECT nombre FROM lista_usuario WHERE dni = '$dni'";
 
@@ -37,7 +38,7 @@
     
     }
 
-    function crearCookie($nombreCookie){ //funcion para crear y almacenar cookie
+    function crearCookie($nombreCookie){
         //Creo el nombre de la cookie
         $GLOBALS["nombre"] = $nombreCookie;
         //creo el valor de la cookie
@@ -51,7 +52,7 @@
         // return $valor;
     }
 
-    function crearServicio($tipoServicio, $descripcionServicio,$conn, $dni, $id_matricula){//funcion para añadir nuevo servicio a la base de datos.
+    function crearServicio($tipoServicio, $descripcionServicio,$conn, $dni, $id_matricula){
         $sql =  "INSERT INTO lista_servicios (tipo_servicio, descripcion, id_matricula) VALUES ('" . $tipoServicio . "','" . $descripcionServicio . "',$id_matricula)";
 
         $results = mysqli_query($conn, $sql);
@@ -65,7 +66,7 @@
         }
     }
 
-    function camposCompletadosNuevoServicio($matricula, $tipoServicio, $descripcionServicio){//funcion para comprobar que esten rellenos los datos en el formulario nuevo servicio. 
+    function camposCompletados($matricula, $tipoServicio, $descripcionServicio){
         if (!empty($matricula) && !empty($tipoServicio) && !empty($descripcionServicio)) {
             return true;
         }else{
@@ -73,11 +74,11 @@
         }
     }
 
-    function crearUsuario($nombre, $apellidos, $dni, $telefono, $email, $contra, $conn){//funcion  para almacenar en la base de datos los datos del nuevo usuario introducidos en el formulario
+    function crearUsuario($nombre, $apellidos, $dni, $telefono, $email, $contra, $conn){
 
         session_start();
-
-        $_SESSION['dni'] = $dni;
+        
+        crearCookie($_SESSION['dni'] . 'Cookie');
         $id_admin = 2;
 
         $sql =  "INSERT INTO lista_usuario (nombre, apellidos, dni, telefono, email, contrasena, id_admin) VALUES ('$nombre', '$apellidos', '$dni', '$telefono', '$email', '$contra', '$id_admin')";
@@ -89,12 +90,12 @@
         }
         else{
 
-            header('Location: ../Vehiculos/vehiculo.php ?dni=<?php echo $_GET["dni"]; ?>&id_admin=<?php echo $_GET["id_admin"]; ?>' );
+            header("Location: ../Vehiculos/vehiculo.php?dni=$dni");
 
         }
     }
 
-    function camposCompletadosNuevoUsuario($nombre, $apellidos, $dni ,$telefono, $email, $contra){ //funcion para comprobar que el formulario esta relleno
+    function camposCompletadosNuevoUsuario($nombre, $apellidos, $dni ,$telefono, $email, $contra){
         if (!empty($nombre) && !empty($apellidos) && !empty($dni) && !empty($telefono) && !empty($email) &&  !empty($contra)) {
             return true;
         }
@@ -103,7 +104,7 @@
         }
     }
 
-    function comprobarDatosNuevoVehivulo($matricula, $marca, $year){ //funcion para comprobar que el formulario esta relleno
+    function comprobarDatosNuevoVehivulo($matricula, $marca, $year){
         if (!empty($matricula) && !empty($modelo) && !empty($year)) {
             return true;
         } else{
@@ -111,7 +112,11 @@
         }
     }
 
+<<<<<<< HEAD
     function crearVehiculo($matricula,$marca, $modelo, $year, $id_usuario, $conn, $sql){ //funcion para almacenar los datos del nuevo vehiculo en la bse de datos
+=======
+    function crearVehiculo($matricula,$marca, $modelo, $year, $id_usuario, $conn, $sql){
+>>>>>>> 5d4c319affdccc9f3b52065ce31ac97dada711cd
         $sql =  "INSERT INTO lista_vehiculos (matricula, marca, modelo, año, id_usuario) VALUES ( '$matricula', '$marca', '$modelo', '$year', $id_usuario)";
 
         $results = mysqli_query($conn, $sql);
@@ -121,6 +126,7 @@
             echo mysqli_error($conn);
         } else {
             header('Location: ../Vehiculos/vehiculo.php?dni=' . $_GET['dni']);
+            
         }
     }
 ?>

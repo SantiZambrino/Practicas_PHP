@@ -61,16 +61,19 @@
                 echo mysqli_error($conn);
         } 
         else {
-
-             ?>
+            
+            ?>
             <div class="container-form">
                 <table name="infoUsuarios" id="infoUsuarios">
-                        
+
+                    
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>DNI</th>
                     <th>Telefono</th>
                     <th>Email</th>
+                
+                    
 
                     <tr>
 
@@ -95,6 +98,10 @@
                 }
 
                     ?>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border: none;" colspan="6"><a class="btn newUser" style="color:#fff; font-weight:400;" href="../Login/newUser.php">Nuevo Usuario</a></td>
+                    
                     </tr>
                 </table>
             </div>
