@@ -1,10 +1,10 @@
 <?php
     function Conexion(){
-
-        $db_host = "localhost";
+        
+        $db_host = "10.192.240.25:3307";
         $db_name = "bd_taller";
-        $db_user = "root";
-        $db_pass = "2DAW2021...";
+        $db_user = "cuentaSanti";
+        $db_pass = "1234";
         
 
 
@@ -112,11 +112,8 @@
         }
     }
 
-<<<<<<< HEAD
     function crearVehiculo($matricula,$marca, $modelo, $year, $id_usuario, $conn, $sql){ //funcion para almacenar los datos del nuevo vehiculo en la bse de datos
-=======
-    function crearVehiculo($matricula,$marca, $modelo, $year, $id_usuario, $conn, $sql){
->>>>>>> 5d4c319affdccc9f3b52065ce31ac97dada711cd
+
         $sql =  "INSERT INTO lista_vehiculos (matricula, marca, modelo, año, id_usuario) VALUES ( '$matricula', '$marca', '$modelo', '$year', $id_usuario)";
 
         $results = mysqli_query($conn, $sql);
