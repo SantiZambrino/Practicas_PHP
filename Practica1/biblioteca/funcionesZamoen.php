@@ -111,7 +111,7 @@
         }
     }
 
-    function crearVehiculo($matricula,$marca, $modelo, $year, $id_usuario, $conn, $sql){ //funcion para almacenar los datos del nuevo vehiculo en la base de datos
+    function crearVehiculo($matricula,$marca, $modelo, $year, $id_usuario, $conn, $sql){ //funcion para almacenar los datos del nuevo vehiculo en la bse de datos
         $sql =  "INSERT INTO lista_vehiculos (matricula, marca, modelo, año, id_usuario) VALUES ( '$matricula', '$marca', '$modelo', '$year', $id_usuario)";
 
         $results = mysqli_query($conn, $sql);
