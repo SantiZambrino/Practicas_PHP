@@ -28,8 +28,7 @@ class pruebasTest extends TestCase {
          $marca = 'Volvo';
          $year = 2019;
          $this ->assertTrue(comprobarDatosNuevoVehivulo($matricula,$marca,$year));
-         $this ->assertFalse(comprobarDatosNuevoVehivulo($matricula,$marca,$year));
-         
+         $this ->assertFalse(comprobarDatosNuevoVehivulo($matricula,'',$year));
      }
 }
 

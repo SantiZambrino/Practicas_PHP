@@ -105,7 +105,7 @@
     }
 
     function comprobarDatosNuevoVehivulo($matricula, $marca, $year){
-        if (!empty($matricula) && !empty($modelo) && !empty($year)) {
+        if (!empty($matricula) && !empty($marca) && !empty($year)) {
             return true;
         } else{
             return false;
