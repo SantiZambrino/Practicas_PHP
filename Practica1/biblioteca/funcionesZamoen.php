@@ -21,7 +21,7 @@
         return $conn;
     }    
 
-    function datosNombre($conn, $dni){
+    function datosNombre ($conn, $dni){
     
         $sqlName = "SELECT nombre FROM lista_usuario WHERE dni = '$dni'";
 

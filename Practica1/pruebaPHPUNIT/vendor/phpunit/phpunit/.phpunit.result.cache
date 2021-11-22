@@ -1,0 +1,1 @@
+{"version":1,"defects":{"pruebasTest::testStringMatch":3,"pruebasTest::testDatosvehiculos":3},"times":{"pruebasTest::testStringMatch":0.003,"pruebasTest::testcamposCompletados":0.007,"pruebasTest::testCompletadosNuevoUsu":0.003,"pruebasTest::testDatosvehiculos":0.027}}
